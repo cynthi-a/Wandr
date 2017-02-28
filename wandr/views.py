@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from wandr.forms import UserForm, UserProfile
+from wandr.forms import UserForm, UserProfileForm
 
 def index(request):
 	return render(request,'wandr/index.html')
@@ -29,8 +29,8 @@ def register(request):
 				registered = True
 
 			else:
-				print(user_form.errors, profile_forms.errors)
+				print(user_form.errors, profile_form.errors)
 		else:
 			user_form = UserForm()
 			profile_form = UserProfileForm()
-	return render( request, 'wandr/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+	return render(request, 'wandr/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
