@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from rango.forms import UserForm, UserProfile
+from wandr.forms import UserForm, UserProfile
 
 # Create your views here.
 def index(request):
