@@ -19,11 +19,11 @@ class UserProfileForm(forms.ModelForm):
 #Cynthia:
 class PictureForm(forms.ModelForm):
 	name = forms.CharField(max_length=128, required=True, help_text="Name your picture.")
-	description = models.CharField(max_length=200, required=True, help_text="Describe your picture in a short sentence")
+	description = forms.CharField(max_length=200, required=True, help_text="Describe your picture in a short sentence")
 	likes = forms.IntegerField(widget=forms.HiddenInput(), initial = 0)
 	slug = forms.CharField(widget=forms.HiddenInput(), required=False)
-	picture = forms.ImageField(upload_to='profile_images', required=True)
+	picture = forms.ImageField(required=True)
 
 	class Meta:
 		model = Picture
-		fields('name', 'description', 'picture')
+		fields = ('name', 'description', 'picture')
