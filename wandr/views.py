@@ -2,11 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from wandr.forms import UserForm, UserProfile
 
-# Create your views here.
 def index(request):
 	return render(request,'wandr/index.html')
 
-
+# register view added by Cristina 28.02.
 def register(request):
 	registered = False
 	if request.method == 'POST':
