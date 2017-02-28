@@ -8,6 +8,8 @@ def index(request):
 # register view added by Cristina 28.02.
 def register(request):
 	registered = False
+	user_form = UserForm
+	profile_form = UserProfileForm
 	if request.method == 'POST':
 		user_form = UserForm(data=request.POST)
 		profile_form = UserProfileForm(data=request.POST)
