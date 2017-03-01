@@ -5,9 +5,13 @@
 {% endblock %}
 
 {% block body_block %}
-		<h1>Welcome to Wandr</h1>
+    {% if user.is_authenticated %}
+		<h1>Welcome to Wandr, {{ user.username }}</h1>
+    {% else %}
+        <h1>Welcome to Wandr</h1>
+    {% endif %}
 		<!-- Cynthia: this is just testing the static file setup-->
-		<div>
-		<img src="{% static "images/hipster.jpg" %}"alt="Picture of a hipster" />
-		</div>
+    <div>
+        <img src="{% static "images/hipster.jpg" %}"alt="Picture of a hipster" />
+    </div>
 {% endblock %}

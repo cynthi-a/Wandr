@@ -1,38 +1,84 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect, HttpResponse
+from django.core.urlresolvers import reverse
 from wandr.forms import UserForm, UserProfileForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+
 
 def index(request):
-	return render(request,'wandr/index.html')
+    return render(request, 'wandr/index.html')
+
 
 # register view added by Cristina 28.02.
 def register(request):
-	registered = False
-	user_form = UserForm
-	profile_form = UserProfileForm
-	if request.method == 'POST':
-		user_form = UserForm(data=request.POST)
-		profile_form = UserProfileForm(data=request.POST)
+    registered = False
 
-		if user_form.is_valid() and profile_form.is_valid():
-			user = user_form.save()
+    # If it's a HTTP POST, process form data
+    if request.method == 'POST':
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileForm(data=request.POST)
 
-			user.set_password(user.password)
-			user.save()
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
 
-			profile = profile_form.save(commit=False)
-			profile.user = user
+            user.set_password(user.password)
+            user.save()
 
-			if 'picture' in request.FILES:
-				profile.picture = request.FILES['picture']
+            profile = profile_form.save(commit=False)
+            profile.user = user
 
-				profile.save()
+            if 'picture' in request.FILES:
+                profile.picture = request.FILES['picture']
 
-				registered = True
+                profile.save()
 
-			else:
-				print(user_form.errors, profile_form.errors)
-		else:
-			user_form = UserForm()
-			profile_form = UserProfileForm()
-	return render(request, 'wandr/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+                registered = True
+
+        else:
+            print(user_form.errors, profile_form.errors)
+
+    # Not a HTTP POST request so input is blank
+    else:
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+
+    return render(request, 'wandr/register.html',
+                  {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+
+
+# Created 01.03
+def user_login(request):
+    # If POST
+    if request.method == 'POST':
+        # Get username and password
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+
+        if user:
+            # If account is valid and active
+            if user.is_active:
+                login(request, user)
+                # return user to homepage
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                # Account is inactive
+                return HttpResponse("Your Wandr account is disabled.")
+        else:
+            # Wrong details used
+            print("Invalid login details: {0}, {1}".format(username, password))
+            return HttpResponse("Invalid login details supplied.")
+
+    # If not POST
+    else:
+        return render(request, 'wandr/login.html', {})
+
+
+# Created 01.03
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
