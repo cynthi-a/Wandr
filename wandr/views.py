@@ -34,10 +34,11 @@ def register(request):
 
                 profile.save()
 
-                registered = True
 
         else:
             print(user_form.errors, profile_form.errors)
+
+        registered = True
 
     # Not a HTTP POST request so input is blank
     else:
@@ -82,3 +83,10 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
+
+# Created 02.03 Cristina
+def about(request):
+    return render(request, 'wandr/about.html')
+
+def contact(request):
+    return render(request, 'wandr/contact.html')
