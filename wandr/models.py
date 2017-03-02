@@ -19,13 +19,12 @@ class Picture(models.Model):
     description = models.CharField(max_length=200, unique=False)
     picture = models.ImageField(upload_to='travel_images', blank=False)
     likes = models.IntegerField(default=0)
+    have_been_list = models.ForeignKey(HaveBeenList)
 
     def __unicode__(self):
         return str(self.picture_id)
 
 
-# class ToGoList(models.Model):
-#
-# class ToGoList(models.Model):
-#     user
-#     picture = models.ImageField(upload_to='profile_images', blank=False)
+class HaveBeenList(models.Model):
+    user = models.ForeignKey(UserProfile, blank=False)
+    list_id = models.AutoField(primary_key=True)
