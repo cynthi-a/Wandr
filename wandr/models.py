@@ -13,6 +13,11 @@ class UserProfile(models.Model):
         return str(self.user.username)
 
 
+class HaveBeenList(models.Model):
+    user = models.ForeignKey(UserProfile, blank=False)
+    list_id = models.AutoField(primary_key=True)
+
+
 class Picture(models.Model):
     picture_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=128, unique=False)
@@ -23,8 +28,3 @@ class Picture(models.Model):
 
     def __unicode__(self):
         return str(self.picture_id)
-
-
-class HaveBeenList(models.Model):
-    user = models.ForeignKey(UserProfile, blank=False)
-    list_id = models.AutoField(primary_key=True)
