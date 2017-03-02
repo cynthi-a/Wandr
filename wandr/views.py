@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
-from wandr.forms import UserForm, UserProfileForm
+from wandr.forms import UserForm, UserProfileForm, PictureForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 
@@ -84,13 +84,14 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
 
-# Created 02.03 Cristina
+# Created 02.03. Cristina
 def about(request):
     return render(request, 'wandr/about.html')
 
 def contact(request):
     return render(request, 'wandr/contact.html')
 
+# created 02.03. Cynthia
 def add_picture(request):
 	form = PictureForm()
 
