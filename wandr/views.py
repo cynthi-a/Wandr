@@ -90,3 +90,16 @@ def about(request):
 
 def contact(request):
     return render(request, 'wandr/contact.html')
+
+def add_picture(request):
+	form = PictureForm()
+
+	if request.method == 'POST':
+		form = PictureForm(request.POST)
+
+		if form.is_valid():
+			form.save(commit = True)
+			return index(request)
+		else:
+			print(form.errors)
+	return render(request, 'wandr/add_picture.html', {'form' : form})
