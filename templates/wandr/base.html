@@ -3,6 +3,10 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static "css/base.css" %}" />
+    {% block css_block %}
+
+    {% endblock %}
     <title>Wandr -
     {% block title_block %}
         Wandr Title
@@ -14,14 +18,6 @@
         {% block body_block %}
         {% endblock %}
     </div>
-
-    <div>
-        {% block sidebar_block %}
-            
-        {% endblock %}
-    </div>
-<hr />
-
 <ul>
     <li><a href="{% url 'index' %}">Home Page</a></li>
     <li><a href="{% url 'about' %}">About</a></li>

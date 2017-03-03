@@ -1,0 +1,22 @@
+body {
+	background-image: url("../images/wandrlust.jpg");
+	background-repeat: no-repeat;
+}
+
+h1 {
+	
+	font-size: 60px;
+	padding-top: 10px;
+	text-align: left;
+}
+
+h2 {
+	text-align: left;
+}
+
+ul {
+	position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
