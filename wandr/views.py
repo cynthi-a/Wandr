@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from wandr.forms import UserForm, UserProfileForm, PictureForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-
+from registration.backends.simple.views import RegistrationView
 
 def index(request):
     return render(request, 'wandr/index.html')
@@ -104,3 +104,13 @@ def add_picture(request):
 		else:
 			print(form.errors)
 	return render(request, 'wandr/add_picture.html', {'form' : form})
+
+# Redirect after successful login - Cristina 04.03.
+#class MyRegistrationView(RegistrationView):
+#    def get_success_url(self, user):
+#        return '/wandr/'
+
+# Registration 04.03 Cristina
+class WandrRegistrationView(RegistrationView):
+   def get_success_url(self, user):
+        return reverse('register_profile')
