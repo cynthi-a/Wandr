@@ -110,7 +110,7 @@ def add_picture(request):
 #    def get_success_url(self, user):
 #        return '/wandr/'
 
-# Registration 04.03 Cristina
+# Registration - redirect user to index after registration 04.03 Cristina
 class WandrRegistrationView(RegistrationView):
    def get_success_url(self, user):
-        return reverse('register_profile')
+        return reverse('index')
