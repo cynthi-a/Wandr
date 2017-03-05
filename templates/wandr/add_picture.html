@@ -10,7 +10,7 @@
  Add a Picture
  </h1>
  <div>
-	<form id="picture_form" methods="post" action="/wandr/add_picture/"
+	<form id="picture_form" method="post" action="/wandr/add_picture/" enctype="multipart/form-data" >
 		{% csrf_token %}
 
 		{{ picture_form.as_p }}
