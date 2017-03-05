@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.core.urlresolvers import reverse
 from wandr.forms import UserForm, UserProfileForm, PictureForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from registration.backends.simple.views import RegistrationView
+from .models import User, HaveBeenList
+
 
 def index(request):
     return render(request, 'wandr/index.html')
@@ -126,3 +128,17 @@ def add_picture(request):
 class WandrRegistrationView(RegistrationView):
    def get_success_url(self, user):
         return reverse('index')
+
+
+def user_profile_view(request, user_id):
+    try:
+        u = User.objects.get(pk=user_id)
+    except User.DoesNotExist:
+        raise Http404("User Does Not Exist")
+
+    have_been_list = HaveBeenList.objects.get(list_id=user_id)
+    context_dict = {
+        'hbl': have_been_list,
+        'user': u,
+    }
+    return render(request, 'wandr/user_profile.html', context_dict)

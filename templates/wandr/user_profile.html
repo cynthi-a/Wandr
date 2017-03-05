@@ -1,0 +1,25 @@
+{% extends 'wandr/base.html' %}
+
+{% block title_block %}
+    User {{ user.username }}
+{% endblock %}
+
+{% block body_block %}
+    <div>
+        <h1>User name: {{ user.username }} {{ user.id }}</h1>
+    </div>
+    <div style="display:flex;align-items: center;justify-content: center;">
+        <img src="/media/{{ user.userprofile.picture }}" alt="profile_image">
+    </div>
+    <div>
+        <h2 style="margin:50px 0;">Have Been List</h2>
+
+
+        {% for picture in hbl.picture_set.all %}
+            <img style="width:19%;padding:20px;box-sizing: border-box" src="/media/{{ picture.picture }}" alt="{{ picture.name }}">
+        {%  endfor %}
+
+
+    </div>
+
+{% endblock %}

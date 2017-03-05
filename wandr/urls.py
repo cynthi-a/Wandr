@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^about/$', views.about, name='about'),
     url(r'^contact/$', views.contact, name='contact'),
     url(r'^add_picture/$', views.add_picture, name='add_picture'),
+    url(r'^profile/(?P<user_id>[0-9]+)/$', views.user_profile_view, name='user_profile'),
 ]
