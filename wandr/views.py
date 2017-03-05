@@ -93,17 +93,29 @@ def contact(request):
 
 # created 02.03. Cynthia
 def add_picture(request):
-	form = PictureForm()
+	# form = PictureForm()
 
-	if request.method == 'POST':
-		form = PictureForm(request.POST)
+	# if request.method == 'POST':
+	# 	form = PictureForm(request.POST)
 
-		if form.is_valid():
-			form.save(commit = True)
-			return index(request)
-		else:
-			print(form.errors)
-	return render(request, 'wandr/add_picture.html', {'form' : form})
+	# 	if form.is_valid():
+	# 		form.save(commit = True)
+	# 		return index(request)
+	# 	else:
+	# 		print(form.errors)
+	# return render(request, 'wandr/add_picture.html', {'form' : form})
+
+    if request.method == 'POST':
+        picture_form = PictureForm(request.POST, request.FILES)
+        if picture_form.is_valid():
+            picture = picture_form.save(commit=False)
+            picture.save()
+        else:
+            print(picture_form.errors)
+
+    picture_form = PictureForm()
+
+    return render(request, 'wandr/add_picture.html', {'picture_form':picture_form})
 
 # Redirect after successful login - Cristina 04.03.
 #class MyRegistrationView(RegistrationView):
