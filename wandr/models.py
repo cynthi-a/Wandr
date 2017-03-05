@@ -24,7 +24,10 @@ class Picture(models.Model):
     description = models.CharField(max_length=200, unique=False)
     picture = models.ImageField(upload_to='travel_images', blank=False)
     likes = models.IntegerField(default=0)
-    have_been_list = models.ForeignKey(HaveBeenList)
+    #have_been_list = models.ForeignKey(HaveBeenList)
 
     def __unicode__(self):
         return str(self.picture_id)
+
+    def __self__(self):
+        return self.name
