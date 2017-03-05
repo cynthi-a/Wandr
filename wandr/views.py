@@ -136,7 +136,11 @@ def user_profile_view(request, user_id):
     except User.DoesNotExist:
         raise Http404("User Does Not Exist")
 
-    have_been_list = HaveBeenList.objects.get(list_id=user_id)
+    try:
+        have_been_list = HaveBeenList.objects.get(list_id=user_id)
+    except HaveBeenList.DoesNotExist:
+        raise Http404("User Does Not Exist")
+
     context_dict = {
         'hbl': have_been_list,
         'user': u,
