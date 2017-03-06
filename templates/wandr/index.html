@@ -3,6 +3,8 @@
 
 {% block css_block %}
     <link rel="stylesheet" href="{% static "css/index.css" %}" />
+    <link rel="stylesheet" href="{% static "css/image_gallery.css" %}" />
+
 {% endblock %}
 
 {% block title_block %}
@@ -10,11 +12,53 @@
 {% endblock %}
 
 {% block body_block %}
+<div class="parallax">
     <h1>Wandr.</h1>
     {% if user.is_authenticated %}
 		<h2>Welcome to Wandr, {{ user.username }}</h2>
     {% else %}
         <h2>Welcome to Wandr</h2>
     {% endif %}
+</div>
+
+<h2>Hot this week</h2>
+{% if pictures %}
+{% for pic in pictures %}
+	<div class="img">
+		<img src="/media/travel_images/{{ pic.picture }}" alt="{{ pic.name }}"/>
+		<div class="img_overlay">
+		<div class="description">
+			{{ pic.name }}</br>
+			{{ pic.description }}</br>
+		</div>
+	</div>
+{% endfor %}
+
+{% else %}
+
+<!-- This is how it would look like if Cynthia could properly load the pictures -->
+	There are no pictures in the gallery. </br>
+	<div class="img">
+		<img src="https://images7.alphacoders.com/326/thumb-1920-326765.jpg">
+		<div class="img_overlay">
+			<div class="description">Name and Description</div>
+		</div>
+	</div>
+
+	<div class="img">
+		<img src="https://images7.alphacoders.com/326/thumb-1920-326765.jpg">
+		<div class="img_overlay">
+			<div class="description">Name and Description</div>
+		</div>
+	</div>
+
+	<div class="img">
+		<img src="https://images7.alphacoders.com/326/thumb-1920-326765.jpg">
+		<div class="img_overlay">
+			<div class="description">Name and Description</div>
+		</div>
+	</div>
+
+{% endif %}
 
 {% endblock %}

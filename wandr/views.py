@@ -6,11 +6,14 @@ from wandr.forms import UserForm, UserProfileForm, PictureForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from registration.backends.simple.views import RegistrationView
-from .models import User, HaveBeenList
+from models import User, HaveBeenList
+from wandr.models import Picture
 
 
 def index(request):
-    return render(request, 'wandr/index.html')
+    picture_list = Picture.objects.order_by('likes')
+    context_dict = {'pictures': picture_list}
+    return render(request, 'wandr/index.html', context=context_dict)
 
 
 # register view added by Cristina 28.02.

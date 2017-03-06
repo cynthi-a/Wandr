@@ -1,23 +1,25 @@
 body {
-	font-size: 14px;
+	font-size: 15px;
 	font-family: "Helvetica", Helvetica, sans-serif;
 }
 
 h1 {
 	padding-top: 35px;
-	padding-left: 10px;
 	font-size: 30px;
 	text-align: center;
+	color: #354b48;
 }
 
 h2 {
-	padding-left: 10px;
 	font-size: 20px;
 	text-align: center;
+	color: #354b48;
 }
 
 ul {
-		position: fixed;
+	border-right: 1px solid #555;
+	font-weight: bold;
+	position: fixed;
     top: 0;
     right: 0;
     left: 0;
@@ -25,7 +27,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #DCDCDC;
+    background-color: #96bca5;
 }
 
 ul a {
@@ -40,7 +42,7 @@ ul a {
 }
 
 ul a:hover {
-	background-color: #111;
+	background-color: #6d9386;
 	color: white;
 }
 
