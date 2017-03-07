@@ -1,6 +1,8 @@
 body {
 	font-size: 15px;
 	font-family: "Helvetica", Helvetica, sans-serif;
+	margin:0;
+	padding:0;
 }
 
 h1 {
