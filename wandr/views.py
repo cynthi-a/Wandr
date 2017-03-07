@@ -6,8 +6,7 @@ from wandr.forms import UserForm, UserProfileForm, PictureForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from registration.backends.simple.views import RegistrationView
-from models import User, HaveBeenList
-from wandr.models import Picture
+from .models import User, HaveBeenList, Picture
 
 
 def index(request):
@@ -139,11 +138,7 @@ def user_profile_view(request, user_id):
     except User.DoesNotExist:
         raise Http404("User Does Not Exist")
 
-    try:
-        have_been_list = HaveBeenList.objects.get(list_id=user_id)
-    except HaveBeenList.DoesNotExist:
-        raise Http404("User Does Not Exist")
-
+    have_been_list = HaveBeenList.objects.get(belongs_to=user_id)
     context_dict = {
         'hbl': have_been_list,
         'user': u,

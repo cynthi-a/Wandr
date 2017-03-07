@@ -1,24 +1,37 @@
 {% extends 'wandr/base.html' %}
-
 {% block title_block %}
     User {{ user.username }}
 {% endblock %}
-
+{# I apologise for the mess of style tags, we can add them to a style sheet later #}
 {% block body_block %}
-    <div>
-        <h1>User name: {{ user.username }} {{ user.id }}</h1>
-    </div>
+    <div style="width:100%;height:300px;background:#dfdfdf"></div>
     <div style="display:flex;align-items: center;justify-content: center;">
-        <img src="/media/{{ user.userprofile.picture }}" alt="profile_image">
+        {% if user.userprofile.picture %}
+            <div style="width:250px;height:250px;border:2px solid #999;border-radius:50%;overflow:hidden;">
+                <img src="/media/{{ user.userprofile.picture }}" alt="profile_image">
+            </div>
+        {% else %}
+            <div style="width:250px;height:250px;border:2px solid #666;background:#ccc;border-radius:50%;margin-top:-125px;overflow:hidden;">
+                <img src="../../../static/images/add-profile-picture.jpg" style="margin:-20px 0 0 -10px" alt="profile_image">
+            </div>
+        {% endif %}
     </div>
     <div>
-        <h2 style="margin:50px 0;">Have Been List</h2>
+        <h1>{{ user.username }} {{ user.id }}</h1>
+    </div>
+    <div>
 
+    </div>
+    <div style="float:left;width:50%;height:300px;border-top:1px solid #cfcfcf;border-right:1px solid #cfcfcf;box-sizing: border-box;">
+        <h2 style="margin:50px 0;">Have Been List ID : {{ hbl.pk }}</h2>
 
         {% for picture in hbl.picture_set.all %}
             <img style="width:19%;padding:20px;box-sizing: border-box" src="/media/{{ picture.picture }}" alt="{{ picture.name }}">
         {%  endfor %}
 
+    </div>
+    <div style="float:left;width:50%;height:300px;border-top:1px solid #cfcfcf">
+        <h2 style="margin:50px 0;">To Go List</h2>
 
     </div>
 
