@@ -29,3 +29,8 @@ class PictureForm(forms.ModelForm):
     class Meta:
         model = Picture
         fields = ('name', 'description', 'picture')
+
+class ContactForm(forms.Form):
+    contact_name = forms.CharField(required=True)
+    contact_email = forms.EmailField(required=True)
+    form_content = forms.CharField(required=True, widget=forms.Textarea)

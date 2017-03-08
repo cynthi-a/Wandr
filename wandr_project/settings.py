@@ -21,6 +21,15 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 LOGIN_URL = '/wandr/login'
 
+# Cynthia: Needed for the contact form, Email does not get sent
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = '2275765L@student.gla.ac.uk'
+EMAIL_HOST = 'legacy.campus.gla.ac.uk'
+EMAIL_PORT = 587
+EMAIL_HOST_USER ='2275765L'
+EMAIL_HOST_PASSWORD ='951011'
+EMAIL_USE_TLS = True
+
 STATICFILES_DIRS = [STATIC_DIR, ]
 
 # Quick-start development settings - unsuitable for production

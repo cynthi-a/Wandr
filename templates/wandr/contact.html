@@ -5,8 +5,13 @@
 {% endblock %}
 
 {% block body_block %}
-    <h1>Contact us</h1>
+    <h1>Contact Us</h1>
     <div>
-        <p>Any questions? Send us a email to ...</p>
+        <h2>Any questions or comments that you want to share? - Send us an email!</h2>
+        <form role="form" action="" method="post">
+        	{% csrf_token %}
+       	 	{{ form.as_p }}
+        	<button type="submit">Send Message</button>
+        </form>
     </div>
 {% endblock %}

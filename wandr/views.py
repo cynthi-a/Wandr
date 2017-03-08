@@ -2,11 +2,18 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.core.urlresolvers import reverse
+from .forms import ContactForm
 from wandr.forms import UserForm, UserProfileForm, PictureForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from registration.backends.simple.views import RegistrationView
 from .models import User, HaveBeenList, Picture
+
+# needed for the contact form email setup
+from django.core.mail import EmailMessage
+from django.shortcuts import redirect
+from django.template import Context
+from django.template.loader import get_template
 
 
 def index(request):
@@ -92,8 +99,45 @@ def user_logout(request):
 def about(request):
     return render(request, 'wandr/about.html')
 
+# created 08.03. Cynthia; email does not get sent
 def contact(request):
-    return render(request, 'wandr/contact.html')
+    form_class = ContactForm
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+
+        if form.is_valid():
+            contact_name = request.POST.get(
+                'contact_name'
+            , '')
+            contact_email = request.POST.get(
+                'contact_email'
+            , '')
+            form_content = request.POST.get('content', '')
+
+            # Email the profile with the 
+            # contact information
+            template = get_template('wandr/contact_template.txt')
+            context = Context({
+                'contact_name': contact_name,
+                'contact_email': contact_email,
+                'form_content': form_content,
+            })
+            content = template.render(context)
+
+            email = EmailMessage(
+                "New contact form submission",
+                content,
+                "Wandr" +'',
+                ['2275765L@student.gla.ac.uk'],
+                headers = {'Reply-To': contact_email }
+            )
+            email.send(fail_silently=False)
+            return redirect('contact')
+
+    return render(request, 'wandr/contact.html', {
+        'form': form_class,
+    })
 
 # created 02.03. Cynthia
 def add_picture(request):
