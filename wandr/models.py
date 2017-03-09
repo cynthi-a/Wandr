@@ -15,6 +15,7 @@ class HaveBeenList(models.Model):
 def create_hbl(sender, **kwargs):
     if kwargs['created']:
         have_been_list = HaveBeenList.objects.create(belongs_to=kwargs['instance'])
+        user_profile = UserProfile.objects.create(user=kwargs['instance'])
 
 post_save.connect(create_hbl, sender=User)
 
@@ -23,7 +24,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
     # additional attributes
     picture = models.ImageField(upload_to='profile_images', blank=True)
-    have_been_list = models.ForeignKey(HaveBeenList)
+    cover_photo = models.ImageField(upload_to='cover_photos', blank=True)
 
     def __unicode__(self):
         return str(self.user.username)

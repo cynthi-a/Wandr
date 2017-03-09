@@ -12,10 +12,20 @@ class UserForm(forms.ModelForm):
         fields = ('username', 'email', 'password')
 
 
-class UserProfileForm(forms.ModelForm):
+class ProfilePictureForm(forms.ModelForm):
+    picture = forms.ImageField(required=False, help_text="Upload your profile photo.")
+
     class Meta:
         model = UserProfile
         fields = ('picture',)
+
+
+class CoverPhotoForm(forms.ModelForm):
+    cover_photo = forms.ImageField(required=False, help_text="Upload your Cover photo.")
+
+    class Meta:
+        model = UserProfile
+        fields = ('cover_photo',)
 
 
 # Cynthia:
@@ -29,6 +39,7 @@ class PictureForm(forms.ModelForm):
     class Meta:
         model = Picture
         fields = ('name', 'description', 'picture')
+
 
 class ContactForm(forms.Form):
     contact_name = forms.CharField(required=True)

@@ -3,11 +3,11 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.core.urlresolvers import reverse
 from .forms import ContactForm
-from wandr.forms import UserForm, UserProfileForm, PictureForm
+from wandr.forms import UserForm, ProfilePictureForm, PictureForm, CoverPhotoForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from registration.backends.simple.views import RegistrationView
-from .models import User, HaveBeenList, Picture
+from .models import User, HaveBeenList, Picture, UserProfile
 
 # needed for the contact form email setup
 from django.core.mail import EmailMessage
@@ -29,35 +29,23 @@ def register(request):
     # If it's a HTTP POST, process form data
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
-        profile_form = UserProfileForm(data=request.POST)
 
-        if user_form.is_valid() and profile_form.is_valid():
+        if user_form.is_valid():
             user = user_form.save()
-
             user.set_password(user.password)
             user.save()
 
-            profile = profile_form.save(commit=False)
-            profile.user = user
-
-            if 'picture' in request.FILES:
-                profile.picture = request.FILES['picture']
-
-                profile.save()
-
-
         else:
-            print(user_form.errors, profile_form.errors)
+            print(user_form.errors)
 
         registered = True
 
     # Not a HTTP POST request so input is blank
     else:
         user_form = UserForm()
-        profile_form = UserProfileForm()
 
     return render(request, 'wandr/register.html',
-                  {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+                  {'user_form': user_form, 'registered': registered})
 
 
 # Created 01.03
@@ -89,15 +77,88 @@ def user_login(request):
         return render(request, 'wandr/login.html', {})
 
 
+@login_required
+# def upload_profile_picture(request, user_id):
+def upload_profile_picture(request, user_id):
+    # user_profile = UserProfile.objects.get(user=request.user)
+    # uploaded = False
+    # form = ProfilePictureForm(initial={'picture':user_profile.picture})
+
+    if request.method == 'POST':
+        user = request.user
+        profile = UserProfile.objects.get(user=user)
+        form = ProfilePictureForm(data=request.POST, instance=profile)
+
+        # def get_object(self, queryset=None):
+        #     return UserProfile.objects.get(user=self.request.user)
+
+        if form.is_valid():
+            page = form.save(commit=False)
+            if 'picture' in request.FILES:
+                page.picture = request.FILES['picture']
+            # user = request.user
+            # profile = UserProfile.objects.get(user=user)
+            # profile.picture = page.picture
+            # profile.picture = page.cleaned_data['picture']
+            # picture = form.cleaned_data['picture']
+            # profile.picture = picture
+            profile.save()
+
+            return HttpResponseRedirect(reverse('user_profile', args=[user_id]))
+
+        else:
+            print(form.errors)
+
+        uploaded = True
+
+    else:
+        user = request.user
+        profile = UserProfile.objects.get(user=user)
+        form = ProfilePictureForm(instance=profile)
+
+    return render(request, 'wandr/upload_profile_picture.html',
+                  {'profile_picture_form': form, 'user_id': user_id})
+
+
+@login_required
+def upload_cover_photo(request, user_id):
+    if request.method == 'POST':
+        user = request.user
+        profile = UserProfile.objects.get(user=user)
+        form = CoverPhotoForm(data=request.POST, instance=profile)
+
+        if form.is_valid():
+            page = form.save(commit=False)
+            if 'cover_photo' in request.FILES:
+                page.cover_photo = request.FILES['cover_photo']
+
+            profile.save()
+
+            return HttpResponseRedirect(reverse('user_profile', args=[user_id]))
+
+        else:
+            print(form.errors)
+
+    else:
+        user = request.user
+        profile = UserProfile.objects.get(user=user)
+        form = CoverPhotoForm(instance=profile)
+
+    return render(request, 'wandr/upload_cover_photo.html',
+                  {'cover_photo_form': form, 'user_id': user_id})
+
+
 # Created 01.03
 @login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
 
+
 # Created 02.03. Cristina
 def about(request):
     return render(request, 'wandr/about.html')
+
 
 # created 08.03. Cynthia; email does not get sent
 def contact(request):
@@ -139,6 +200,7 @@ def contact(request):
         'form': form_class,
     })
 
+
 # created 02.03. Cynthia
 def add_picture(request):
 	# form = PictureForm()
@@ -169,6 +231,7 @@ def add_picture(request):
 #class MyRegistrationView(RegistrationView):
 #    def get_success_url(self, user):
 #        return '/wandr/'
+
 
 # Registration - redirect user to index after registration 04.03 Cristina
 class WandrRegistrationView(RegistrationView):
