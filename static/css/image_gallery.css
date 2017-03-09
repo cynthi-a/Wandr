@@ -1,8 +1,9 @@
 .img {
-    margin: 10px;
+    margin-top: 40px;
+    margin-right: 40px;
+    width: 44.5%;
     border: 2px solid #96bca5;
-    float: center;
-    width: 500px;
+    float: left;
     text-align: center;
     position: relative;
 }
@@ -12,7 +13,12 @@ img {
     height: auto;
 }
 
+.image-container {
+  padding-left: 5%;
+}
+
 .img_overlay {
+  opacity: 0.6;
   position: absolute;
   bottom: 0;
   left: 0;

@@ -20,7 +20,10 @@ h1 {
 	text-align: left;
 }
 
-h2 {
+h2.welcome {
+    padding-left:35px;
+    text-align: left;
+}
+h2.hotThisWeek {
 	text-align: left;
-    padding-left: 35px;
 }
