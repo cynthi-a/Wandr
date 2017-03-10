@@ -35,12 +35,12 @@
         {% if user.userprofile.picture %}
             <div id="profile-picture-wrapper" style="width:250px;height:250px;border:7px solid #fff;border-radius:50%;margin-top:-125px;overflow:hidden;">
                 {% if this_user %}
-                    <div class="edit-profile-pic-icon"><a href="upload_profile_picture"><img src="../../../static/images/edit_pencil.jpg"></div></a>
+                    <div class="edit-profile-pic-icon"><a href="upload_profile_picture"><img src="../../../static/images/edit_pencil.jpg" /></a></div>
                 {% endif %}
                     <img src="/media/{{ user.userprofile.picture }}" style="width:250px;" alt="profile_image">
             </div>
         {% else %}
-            <div style="width:250px;height:250px;border:2px solid #666;background:#ccc;border-radius:50%;margin-top:-125px;overflow:hidden;position:relative;">
+            <div style="width:250px;height:250px;border:3px solid #969696;background:#ccc;border-radius:50%;margin-top:-125px;overflow:hidden;position:relative;">
 {# Change to dynamic urls #}
                 {% if this_user %}
                     <a href="upload_profile_picture"><img src="../../../static/images/add-profile-picture.jpg" style="margin:-20px 0 0 -10px" alt="profile_image"></a>
