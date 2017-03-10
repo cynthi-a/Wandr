@@ -21,25 +21,24 @@
 </div>
 
 
-<div class="image-container" >
-
-<h2 class="hotThisWeek">Hot this week</h2>
-{% if pictures %}
-<div>
-{% for pic in pictures %}
-	<div class="img">
-{#		<img src="/media/travel_images/{{ pic.picture }}" alt="{{ pic.name }}"/>#}
-		<div class="img_overlay">
-            <div class="description">
-{#                {{ pic.name }}<br />#}
-{#                {{ pic.description }}<br />#}
-            </div>
-	    </div>
-    </div>
-{% endfor %}
-</div>
-
-{% else %}
+<div class="image-container">
+    <h2 class="hotThisWeek">Hot this week</h2>
+{#    {% if pictures %}#}
+    {#<div>#}
+{#    {% for pic in pictures %}#}
+{#        <div class="img">#}
+    {#		<img src="/media/travel_images/{{ pic.picture }}" alt="{{ pic.name }}"/>#}
+{#            <div class="img_overlay">#}
+{#                <div class="description">#}
+    {#                {{ pic.name }}<br />#}
+    {#                {{ pic.description }}<br />#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    {% endfor %}#}
+{##}
+{##}
+{#{% else %}#}
 
 <!-- This is how it would look like if Cynthia could properly load the pictures -->
 	There are no pictures in the gallery. </br>
@@ -68,9 +67,11 @@
 	</div>
 
 
-{% endif %}
-{% else %}
-{% endif %}
+{#{% endif %}#}
+</div>
+
+{% else %} <!-- Else if user is not authenticated -->
+{% endif %} <!-- End of user.is_authenticated -->
 {% endblock %} <!-- End of background_image block -->
 
 {% block body_block %}
