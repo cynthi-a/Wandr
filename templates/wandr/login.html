@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block body_block %}
+<div class="margin-control">
     <h1>Login to Wandr</h1>
         <form id="login_form" method="post" action="{% url 'login' %}">
             {% csrf_token %}
@@ -15,4 +16,5 @@
             <br />
             <input type="submit" value="submit" />
         </form>
+</div>
 {% endblock %}

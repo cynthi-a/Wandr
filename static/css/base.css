@@ -1,6 +1,5 @@
 body {
-	background-color: #e3f1e2;
-	font-size: 15px;
+	font-size: 16px;
 	font-family: "Helvetica", Helvetica, sans-serif;
 	margin:0;
 }
@@ -29,7 +28,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #96bca5;
+    background-color: #8ED081;
 }
 
 ul a {
@@ -52,8 +51,13 @@ ul a:active {
 	background-color: #696969;
 }
 
+p.justified {
+	text-align: justify;
+}
+
 .margin-control {
 	padding-left: 5%;
+	padding-right: 5%;
 }
 
 #menu-profile {
