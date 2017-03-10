@@ -1,8 +1,17 @@
+body.index {
+	background-color: #e3f1e2;
+	font-size: 15px;
+	font-family: "Helvetica", Helvetica, sans-serif;
+	margin:0;
+	/*padding-left: 5%;*/
+}
+
 body {
 	background-color: #e3f1e2;
 	font-size: 15px;
 	font-family: "Helvetica", Helvetica, sans-serif;
 	margin:0;
+	margin-left: 5%;
 }
 
 h1 {
@@ -71,4 +80,9 @@ ul a:active {
 #profile-icon-wrapper img {
 	height:45px;
 	width:45px;
+}
+
+a {
+	color: black;
+	text-decoration: none;
 }
