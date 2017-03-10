@@ -13,12 +13,13 @@
 
 
 {% block background_image %}
+
 <!-- Page for logged in users -->
 {% if user.is_authenticated %}
 <div class="parallax">
     <h1>Wandr.</h1>
-
 </div>
+
 
 <div class="image-container" >
 
@@ -66,7 +67,6 @@
 		</div>
 	</div>
 
-	</div>
 
 {% endif %}
 {% else %}
@@ -79,7 +79,7 @@
 {% else %}
 	<br />
 	<br />
-	<h2 class="welcome">Welcome to Wandr</h2>
+	<h1>Welcome to Wandr</h1>
 	<a href="{% url 'registration_register' %}">Register here</a>
 {% endif %}
 
