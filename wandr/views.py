@@ -18,7 +18,9 @@ from django.template.loader import get_template
 
 def index(request):
     picture_list = Picture.objects.order_by('likes')
-    context_dict = {'pictures': picture_list}
+    user_id = request.user.pk
+    context_dict = {'pictures': picture_list, 'user_id': user_id}
+
     return render(request, 'wandr/index.html', context=context_dict)
 
 
@@ -245,9 +247,15 @@ def user_profile_view(request, user_id):
     except User.DoesNotExist:
         raise Http404("User Does Not Exist")
 
+    if u == request.user:
+        this_user = True
+    else:
+        this_user = False
+
     have_been_list = HaveBeenList.objects.get(belongs_to=user_id)
     context_dict = {
         'hbl': have_been_list,
         'user': u,
+        'this_user': this_user
     }
     return render(request, 'wandr/user_profile.html', context_dict)

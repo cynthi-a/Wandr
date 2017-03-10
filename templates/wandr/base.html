@@ -16,21 +16,36 @@
 <body>
         {% block background_image %}
         {% endblock %}
-    <div style="padding-left: 40px">
+{#    <div style="padding-left: 40px">#}
         {% block body_block %}
         {% endblock %}
+{#    </div>#}
+
+
+    <div id="menu-profile">
+        {% if user.is_authenticated %}
+            Hi, {{ user.username }}
+        <div id="profile-icon-wrapper">
+
+            <a href="{% url 'user_profile' user.pk %}">
+                <img src="/media/{{ user.userprofile.picture }}" alt="user icon" />
+{#                <img src="../../../static/images/user-icon.jpg" alt="user icon" />#}
+            </a>
+        </div>
+        {%  endif %}
     </div>
-<ul>
-    <li><a href="{% url 'index' %}">Home Page</a></li>
-    <li><a href="{% url 'add_picture' %}">Add a Picture</a></li>
-    <li><a href="{% url 'about' %}">About</a></li>
-    <li><a href="{% url 'contact' %}">Contact</a></li>
-    {% if user.is_authenticated %}
-        <li><a href="{% url 'auth_logout' %}?next=/wandr/">Log Out</a></li>
-    {% else %}
-        <li><a href="{% url 'auth_login' %}">Sign In</a></li>
-        <li><a href="{% url 'registration_register' %}">Sign Up</a></li>
-    {% endif %}
-</ul>
+
+    <ul>
+        <li><a href="{% url 'index' %}">Home Page</a></li>
+        <li><a href="{% url 'add_picture' %}">Add a Picture</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'auth_logout' %}?next=/wandr/">Log Out</a></li>
+        {% else %}
+            <li><a href="{% url 'auth_login' %}">Sign In</a></li>
+            <li><a href="{% url 'registration_register' %}">Sign Up</a></li>
+        {% endif %}
+    </ul>
 </body>
 </html>
