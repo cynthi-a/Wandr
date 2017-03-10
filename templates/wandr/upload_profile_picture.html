@@ -6,8 +6,6 @@
 {% block body_block %}
 <h1>This is the upload profile picture page.</h1>
 
-    <h1>Register for Wandr</h1>
-
         Upload here
         <form id="profile_picture_form" method="post" action="{% url 'upload_p_picture' user_id %}" enctype="multipart/form-data">
         {% csrf_token %}
