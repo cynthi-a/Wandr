@@ -24,14 +24,15 @@
 
     <div id="menu-profile">
         {% if user.is_authenticated %}
-            Hi, {{ user.username }}
-        <div id="profile-icon-wrapper">
-
             <a href="{% url 'user_profile' user.pk %}">
-                <img src="/media/{{ user.userprofile.picture }}" alt="user icon" />
-{#                <img src="../../../static/images/user-icon.jpg" alt="user icon" />#}
+            Hi, {{ user.username }}
+            {% if user.userprofile.picture %}
+            <div id="profile-icon-wrapper">
+                    <img src="/media/{{ user.userprofile.picture }}" alt="user icon" />
+    {#                <img src="../../../static/images/user-icon.jpg" alt="user icon" />#}
+            </div>
+            {% endif %}
             </a>
-        </div>
         {%  endif %}
     </div>
 
