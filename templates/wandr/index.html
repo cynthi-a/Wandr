@@ -17,7 +17,7 @@
 <!-- Page for logged in users -->
 {% if user.is_authenticated %}
 <div class="parallax">
-    <h1>Wandr.</h1>
+    <h1 id="wandr-title">Wandr.</h1>
 </div>
 
 
@@ -78,10 +78,15 @@
 <!-- Part for not logged in users -->
 {% if user.is_authenticated %}
 {% else %}
-	<br />
-	<br />
-	<h1>Welcome to Wandr</h1>
-	<a href="{% url 'registration_register' %}">Register here</a>
+	<div class="margin-control">
+		<h1>Welcome to Wandr</h1>
+	</div>
+	
+	<div id="login-and-register-buttons">
+		<div><a class="button" href="{% url 'registration_register' %}">Register here</a></div>
+		</br>
+		<div><a class="button" href="{% url 'login' %}">Sign In</a></div>
+	</div>
 {% endif %}
 
 
