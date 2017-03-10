@@ -1,17 +1,8 @@
-body.index {
-	background-color: #e3f1e2;
-	font-size: 15px;
-	font-family: "Helvetica", Helvetica, sans-serif;
-	margin:0;
-	/*padding-left: 5%;*/
-}
-
 body {
 	background-color: #e3f1e2;
 	font-size: 15px;
 	font-family: "Helvetica", Helvetica, sans-serif;
 	margin:0;
-	margin-left: 5%;
 }
 
 h1 {
@@ -59,6 +50,10 @@ ul a:hover {
 
 ul a:active {
 	background-color: #696969;
+}
+
+.margin-control {
+	padding-left: 5%;
 }
 
 #menu-profile {
