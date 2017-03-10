@@ -11,18 +11,22 @@
 	Wandr
 {% endblock %}
 
-{% block body_block %}
+
+{% block background_image %}
 <div class="parallax">
     <h1>Wandr.</h1>
     {% if user.is_authenticated %}
-		<h2>Welcome to Wandr, {{ user.username }}</h2>
+		<h2 class="welcome">Welcome to Wandr, {{ user.username }}</h2>
     {% else %}
-        <h2>Welcome to Wandr</h2>
+        <h2 class="welcome">Welcome to Wandr</h2>
     {% endif %}
 </div>
 
-<h2>Hot this week</h2>
+<div class="image-container" >
+
+<h2 class="hotThisWeek">Hot this week</h2>
 {% if pictures %}
+<div>
 {% for pic in pictures %}
 	<div class="img">
 		<img src="/media/travel_images/{{ pic.picture }}" alt="{{ pic.name }}"/>
@@ -33,11 +37,22 @@
 		</div>
 	</div>
 {% endfor %}
+</div>
 
 {% else %}
 
 <!-- This is how it would look like if Cynthia could properly load the pictures -->
 	There are no pictures in the gallery. </br>
+
+	
+
+	<div class="img">
+		<img src="https://images7.alphacoders.com/326/thumb-1920-326765.jpg">
+		<div class="img_overlay">
+			<div class="description">Name and Description</div>
+		</div>
+	</div>
+
 	<div class="img">
 		<img src="https://images7.alphacoders.com/326/thumb-1920-326765.jpg">
 		<div class="img_overlay">
@@ -52,13 +67,13 @@
 		</div>
 	</div>
 
-	<div class="img">
-		<img src="https://images7.alphacoders.com/326/thumb-1920-326765.jpg">
-		<div class="img_overlay">
-			<div class="description">Name and Description</div>
-		</div>
 	</div>
 
 {% endif %}
+{% endblock %}
+
+{% block body_block %}
+
+
 
 {% endblock %}
