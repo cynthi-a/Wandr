@@ -246,6 +246,7 @@ class WandrRegistrationView(RegistrationView):
         return reverse('index')
 
 
+@login_required
 def user_profile_view(request, user_id):
     try:
         u = User.objects.get(pk=user_id)
