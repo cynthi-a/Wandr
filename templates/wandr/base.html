@@ -24,11 +24,11 @@
 
     <div id="menu-profile">
         {% if user.is_authenticated %}
-            <a href="{% url 'user_profile' user.pk %}">
-            Hi, {{ user.username }}
-            {% if user.userprofile.picture %}
+            <a href="{% url 'user_profile' request.user.pk %}">
+            Hi, {{ request.user.username }}
+            {% if request.user.userprofile.picture %}
             <div id="profile-icon-wrapper">
-                    <img src="/media/{{ user.userprofile.picture }}" alt="user icon" />
+                    <img src="/media/{{ request.user.userprofile.picture }}" alt="user icon" />
     {#                <img src="../../../static/images/user-icon.jpg" alt="user icon" />#}
             </div>
             {% endif %}

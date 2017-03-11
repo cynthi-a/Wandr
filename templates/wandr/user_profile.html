@@ -60,10 +60,22 @@
 
     </div>
     <div style="float:left;width:50%;height:300px;border-top:1px solid #cfcfcf;border-right:1px solid #cfcfcf;box-sizing: border-box;">
-        <h2 style="margin:50px 0;">Have Been List ID : {{ hbl.pk }}</h2>
+        {% if this_user %}
+            <h2>Your Have Been List</h2>
+            <div class="hbl-add-picture-wrapper">
+                <a href="{% url 'add_picture' %}">
+                    <div class="hbl-add-picture-button">
+                        <h3>Add a picture</h3>
+                        <img src="../../../static/images/plus.png" alt="add picture">
+                    </div>
+                </a>
+            </div>
+        {% else %}
+            <h2 style="margin:50px 0;">{{ user.username }}'s Have Been List</h2>
+        {% endif %}
 
         {% for picture in hbl.picture_set.all %}
-            <img style="width:19%;padding:20px;box-sizing: border-box" src="/media/{{ picture.picture }}" alt="{{ picture.name }}">
+            <img style="width:32%;max-height:300px;padding:20px;box-sizing: border-box" src="/media/{{ picture.picture }}" alt="{{ picture.name }}">
         {%  endfor %}
 
     </div>

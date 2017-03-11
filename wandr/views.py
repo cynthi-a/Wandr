@@ -204,6 +204,7 @@ def contact(request):
 
 
 # created 02.03. Cynthia
+@login_required
 def add_picture(request):
 	# form = PictureForm()
 
@@ -219,9 +220,13 @@ def add_picture(request):
 
     if request.method == 'POST':
         picture_form = PictureForm(request.POST, request.FILES)
+        user_id = request.user.pk
         if picture_form.is_valid():
             picture = picture_form.save(commit=False)
+            picture.have_been_list = HaveBeenList.objects.get(belongs_to=user_id)
             picture.save()
+
+            return HttpResponseRedirect(reverse('user_profile', args=[user_id]))
         else:
             print(picture_form.errors)
 
