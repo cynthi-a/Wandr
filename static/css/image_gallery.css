@@ -1,16 +1,22 @@
-.img {
+.img-wrapper {
     margin-top: 40px;
     margin-right: 40px;
     width: 44.5%;
+    padding-bottom: 30%;
     border: 2px solid #96bca5;
     float: left;
     text-align: center;
     position: relative;
+    overflow: hidden;
+    background: #333;
 }
 
-img {
+.img-wrapper img {
     width: 100%;
-    height: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
 }
 
 .image-container {
@@ -30,7 +36,7 @@ img {
   transition: .5s ease;
 }
 
-.img:hover .img_overlay {
+.img-wrapper:hover .img_overlay {
     width: 100%;
     border: 1px solid #777;
 }

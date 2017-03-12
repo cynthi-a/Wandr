@@ -20,28 +20,25 @@
     <h1 id="wandr-title">Wandr.</h1>
 </div>
 
-
 <div class="image-container">
     <h2 class="hotThisWeek">Hot this week</h2>
-{#    {% if pictures %}#}
-    {#<div>#}
-{#    {% for pic in pictures %}#}
-{#        <div class="img">#}
-    {#		<img src="/media/travel_images/{{ pic.picture }}" alt="{{ pic.name }}"/>#}
-{#            <div class="img_overlay">#}
-{#                <div class="description">#}
-    {#                {{ pic.name }}<br />#}
-    {#                {{ pic.description }}<br />#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    {% endfor %}#}
-{##}
-{##}
-{#{% else %}#}
+    {% if pictures %}
+    <div>
+    {% for pic in pictures %}
+        <div class="img-wrapper">
+    		<img src="/media/{{ pic.picture }}" alt="{{ pic.name }}"/>
+            <div class="img_overlay">
+                <div class="description">
+                    {{ pic.name }}</br>
+                    {{ pic.description }}</br>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
 
 <!-- This is how it would look like if Cynthia could properly load the pictures -->
-	There are no pictures in the gallery. </br>
+<!-- 	There are no pictures in the gallery. </br>
 
 	
 
@@ -64,10 +61,11 @@
 		<div class="img_overlay">
 			<div class="description">Name and Description</div>
 		</div>
-	</div>
+	</div> -->
+
+{% endif %}
 
 
-{#{% endif %}#}
 </div>
 
 {% else %} <!-- Else if user is not authenticated -->
