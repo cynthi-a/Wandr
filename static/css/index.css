@@ -51,3 +51,8 @@ a.button:hover {
 a.button:click {
     background-color: #415F3B;
 }
+
+div.logo img {
+    margin-left: 32%;
+    width: 35%;
+}
