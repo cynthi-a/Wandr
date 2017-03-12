@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^about/$', views.about, name='about'),
     url(r'^contact/$', views.contact, name='contact'),
     url(r'^add_picture/$', views.add_picture, name='add_picture'),
-    
+    url(r'^add_picture_success/$', views.add_picture_success, name='add_picture_success'),
     url(r'^profile/(?P<user_id>[0-9]+)/$', views.user_profile_view, name='user_profile'),
     url(r'^profile/(?P<user_id>[0-9]+)/upload_profile_picture/$', views.upload_profile_picture, name='upload_p_picture'),
     url(r'^profile/(?P<user_id>[0-9]+)/upload_cover_photo/$', views.upload_cover_photo, name='upload_cover_photo'),

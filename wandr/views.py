@@ -202,8 +202,11 @@ def contact(request):
         'form': form_class,
     })
 
-
 # created 02.03. Cynthia
+
+def add_picture_success(request):
+	return render(request, 'wandr/add_picture_success.html')
+
 @login_required
 def add_picture(request):
 	# form = PictureForm()
@@ -226,7 +229,8 @@ def add_picture(request):
             picture.have_been_list = HaveBeenList.objects.get(belongs_to=user_id)
             picture.save()
 
-            return HttpResponseRedirect(reverse('user_profile', args=[user_id]))
+            #return HttpResponseRedirect(reverse('user_profile', args=[user_id]))
+            return HttpResponseRedirect(reverse('add_picture_success'))
         else:
             print(picture_form.errors)
 
