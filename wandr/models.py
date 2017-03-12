@@ -33,10 +33,11 @@ class UserProfile(models.Model):
 class Picture(models.Model):
     picture_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=128, unique=False)
-    description = models.CharField(max_length=200, unique=False)
+    description = models.CharField(max_length=200, unique=False, default = 'unknown')
     picture = models.ImageField(upload_to='travel_images', blank=False)
     likes = models.IntegerField(default=0)
     have_been_list = models.ForeignKey(HaveBeenList, on_delete=models.CASCADE)
+    location = models.CharField(max_length=128, unique=False)
 
     def __unicode__(self):
         return 'Name: ' + str(self.picture_id) + ' --- ID: ' + str(self.picture_id)
