@@ -9,21 +9,21 @@
 {% block title_block %}
     User {{ user.username }}
 {% endblock %}
-{# I apologise for the mess of style tags, we can add them to a style sheet later #}
+
 {% block body_block %}
 
     <!-- Cover photo -->
-    <div id="cover-photo-container" style="width:100%;height:400px;background:#dfdfdf">
+    <div id="cover-photo-container">
         {% if user.userprofile.cover_photo %}
             {% if this_user %}
                 <div class="edit-cover-photo-icon"><a href="upload_cover_photo"><img src="../../../static/images/edit_pencil.jpg"></a></div>
             {% endif %}
-            <div style="background:url('/media/{{ user.userprofile.cover_photo }}'); background-size:cover;width:100%;height:400px;"></div>
+            <div id="cover-photo-wrapper" style="background:url('/media/{{ user.userprofile.cover_photo }}');"></div>
         {% else %}
             {% if this_user %}
-                <a style="text-decoration: none;" href="upload_cover_photo">
-                    <div style="width:100%;height:400px;display:flex;align-items:center;justify-content:center;flex-direction:row;">
-                        <h1 style="text-align: center;padding:0;color:#969696;">Upload your cover photo</h1><img src="../../../static/images/plus.png" alt="">
+                <a href="upload_cover_photo">
+                    <div id="empty-cover-photo-wrapper">
+                        <h1>Upload your cover photo</h1><img src="../../../static/images/plus.png" alt="">
                     </div>
                 </a>
             {% endif %}
@@ -31,19 +31,25 @@
     </div>
 
     <!-- Profile Picture -->
-    <div style="display:flex;align-items: center;justify-content: center;">
+    <div id="profile-picture-container">
         {% if user.userprofile.picture %}
-            <div id="profile-picture-wrapper" style="width:250px;height:250px;border:7px solid #fff;border-radius:50%;margin-top:-125px;overflow:hidden;">
+            <div id="profile-picture-wrapper">
                 {% if this_user %}
-                    <div class="edit-profile-pic-icon"><a href="upload_profile_picture"><img src="../../../static/images/edit_pencil.jpg" /></a></div>
+                    <div class="edit-profile-pic-icon">
+                        <a href="upload_profile_picture">
+                            <img class="edit-pencil-img" src="../../../static/images/edit_pencil.jpg" />
+                        </a>
+                    </div>
                 {% endif %}
-                    <img src="/media/{{ user.userprofile.picture }}" style="width:250px;" alt="profile_image">
+                    <img class="profile-picture-img" src="/media/{{ user.userprofile.picture }}" alt="profile_image">
             </div>
         {% else %}
-            <div style="width:250px;height:250px;border:3px solid #969696;background:#ccc;border-radius:50%;margin-top:-125px;overflow:hidden;position:relative;">
+            <div id="empty-profile-picture-wrapper">
 {# Change to dynamic urls #}
                 {% if this_user %}
-                    <a href="upload_profile_picture"><img src="../../../static/images/add-profile-picture.jpg" style="margin:-20px 0 0 -10px" alt="profile_image"></a>
+                    <a href="upload_profile_picture">
+                        <img src="../../../static/images/add-profile-picture.jpg" alt="profile_image">
+                    </a>
                 {% endif %}
             </div>
         {% endif %}
@@ -56,10 +62,9 @@
         <h1>{{ user.username }} {{ user.id }}</h1>
     {% endif %}
     </div>
-    <div>
 
-    </div>
-    <div style="float:left;width:50%;height:300px;border-top:1px solid #cfcfcf;border-right:1px solid #cfcfcf;box-sizing: border-box;">
+    <!-- Have Been List -->
+    <div class="hbl-container">
         {% if this_user %}
             <h2>Your Have Been List</h2>
             <div class="hbl-add-picture-wrapper">
@@ -71,16 +76,18 @@
                 </a>
             </div>
         {% else %}
-            <h2 style="margin:50px 0;">{{ user.username }}'s Have Been List</h2>
+            <h2>{{ user.username }}'s Have Been List</h2>
         {% endif %}
 
         {% for picture in hbl.picture_set.all %}
-            <img style="width:32%;max-height:300px;padding:20px;box-sizing: border-box" src="/media/{{ picture.picture }}" alt="{{ picture.name }}">
+            <img class="profile-list-image" src="/media/{{ picture.picture }}" alt="{{ picture.name }}">
         {%  endfor %}
 
     </div>
-    <div style="float:left;width:50%;height:300px;border-top:1px solid #cfcfcf">
-        <h2 style="margin:50px 0;">To Go List</h2>
+
+    <!-- To Go List -->
+    <div class="tgl-container">
+        <h2>To Go List</h2>
 
     </div>
 

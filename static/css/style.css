@@ -1,8 +1,30 @@
 #cover-photo-container {
     position: relative;
+    width:100%;
+    height:400px;
+    background:#dfdfdf;
 }
-#profile-picture-wrapper {
-    position: relative;
+#cover-photo-container a {
+    text-decoration: none;
+}
+
+#cover-photo-wrapper {
+    background-size:cover;
+    width:100%;
+    height:400px;
+}
+#empty-cover-photo-wrapper {
+    width:100%;
+    height:400px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:row;
+}
+#empty-cover-photo-wrapper h1 {
+    text-align: center;
+    padding:0;
+    color:#969696;
 }
 .edit-cover-photo-icon {
     position:absolute;
@@ -22,6 +44,35 @@
     height:60px;
     width:60px;
 }
+
+#profile-picture-container {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+#profile-picture-wrapper {
+    position: relative;
+    width:250px;
+    height:250px;
+    border:7px solid #fff;
+    border-radius:50%;
+    margin-top:-125px;
+    overflow:hidden;
+}
+#empty-profile-picture-wrapper {
+    width:250px;
+    height:250px;
+    border:3px solid #969696;
+    background:#ccc;
+    border-radius:50%;
+    margin-top:-125px;
+    overflow:hidden;
+    position:relative;
+}
+#empty-profile-picture-wrapper img {
+    margin:-20px 0 0 -10px;
+}
+
 .edit-profile-pic-icon {
     position:absolute;
     right: 50%;
@@ -30,13 +81,18 @@
     border-radius:5px;
     overflow: hidden;
     height:60px;
+    width:60px;
     border:1px solid #000;
     box-shadow: 2px 3px 5px #333;
     opacity:0;
     transform:scale(0);
     transition: all 0.3s cubic-bezier(0.56, 0.08, 0.24, 2.04);
 }
-.edit-profile-pic-icon img{
+
+.profile-picture-img {
+    width:250px;
+}
+.edit-pencil-img {
     height:60px;
     width:60px;
 }
@@ -81,4 +137,28 @@
 .hbl-add-picture-button img {
     width:40px;
     height:40px;
+}
+
+.hbl-container {
+    float:left;
+    width:50%;
+    height:300px;
+    border-top:1px solid #cfcfcf;
+    border-right:1px solid #cfcfcf;
+    box-sizing: border-box;
+}
+.profile-list-image {
+    width:32%;
+    max-height:300px;
+    padding:20px;
+    box-sizing: border-box
+}
+.tgl-container {
+    float:left;
+    width:50%;
+    height:300px;
+    border-top:1px solid #cfcfcf;
+}
+tgl-container h2 {
+    margin:50px 0;
 }

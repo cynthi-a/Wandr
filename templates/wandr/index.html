@@ -78,18 +78,21 @@
 <!-- Part for not logged in users -->
 {% if user.is_authenticated %}
 {% else %}
-	<div class="margin-control">
-		<h1>Welcome to Wandr</h1>
-	</div>
-	<div class="logo">
-		<img src="/static/images/wandr_logo.png" alt="Wandr Logo"/>
-	</div>
+	<div id="signin-container">
+        <div id="signin-box">
 
-	<div id="login-and-register-buttons">
-		<div><a class="button" href="{% url 'registration_register' %}">Register here</a></div>
-		</br>
-		<div><a class="button" href="{% url 'login' %}">Sign In</a></div>
-	</div>
+            <div class="margin-control">
+                <img src="../../../static/images/wandr-seal.png" alt="Wandr Logo" />
+                <h1>Welcome to Wandr</h1>
+            </div>
+
+            <div id="login-and-register-buttons">
+                <div><a class="button" href="{% url 'registration_register' %}">Register here</a></div>
+                </br>
+                <div><a class="button" href="{% url 'login' %}">Sign In</a></div>
+            </div>
+        </div>
+    </div>
 {% endif %}
 
 
