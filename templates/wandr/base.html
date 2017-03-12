@@ -37,7 +37,7 @@
     </div>
 
     <ul>
-        <li><a href="{% url 'index' %}">Home Page</a></li>
+        <li><a href="{% url 'index' %}"><img src="../../../static/images/logo-50.png" alt="Wandr Logo" style="margin: -25px 0px -20px 20px;"/></a></li>
         <li><a href="{% url 'add_picture' %}">Add a Picture</a></li>
         <li><a href="{% url 'about' %}">About</a></li>
         <!--<li><a href="{% url 'contact' %}">Contact</a></li>-->
@@ -49,4 +49,11 @@
         {% endif %}
     </ul>
 </body>
+<footer>
+ <div>
+ <a href="{% url 'about' %}">@ 2017 Pinniped Production</a>
+ <a href="mailto:email@email.com">email@email.com</a>
+ <a href=""><img src="../../../static/images/logo-50.png" alt="Wandr Logo" style="margin-top: -10px"/></a>
+ </div>
+</footer>
 </html>
