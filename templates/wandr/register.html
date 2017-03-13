@@ -17,7 +17,7 @@
     {% else %}
         <form id="user_form" method="post" action="{% url 'register' %}" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="container">
+        <div class="container col-sm-10">
         
          <!-- Display each form -->
 <!--          {{ user_form.as_p }}
