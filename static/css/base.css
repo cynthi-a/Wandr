@@ -109,7 +109,8 @@ footer {
 }
 
 footer.site-footer, .page-wrap:after {
-  height: 70px;
+  	çheight: 70px;
+	clear:both;
 }
 
 footer a {
