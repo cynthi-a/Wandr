@@ -1,0 +1,17 @@
+input:nth-child(1) {
+	box-sizing: border-box;
+	width: 30%;
+	height: 20px;
+	background-color: #DCE2AA;
+}
+
+span.helptext {
+	position: absolute;
+	margin-left: 30px;
+}
+
+.form {
+	border: 2px solid #82BE76;
+	padding: 15px;
+	margin: 10px;
+}

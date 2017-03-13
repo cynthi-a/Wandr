@@ -4,82 +4,44 @@
 {% block css_block %}
     <link rel="stylesheet" href="{% static "css/index.css" %}" />
     <link rel="stylesheet" href="{% static "css/image_gallery.css" %}" />
-
 {% endblock %}
 
 {% block title_block %}
 	Wandr
 {% endblock %}
 
-
-{% block background_image %}
-
+{% block body_block %}
 <!-- Page for logged in users -->
 {% if user.is_authenticated %}
 <div class="parallax">
     <h1 id="wandr-title">Wandr.</h1>
 </div>
 
-<div class="image-container">
+<div class="margin-control">
     <h2 class="hotThisWeek">Hot this week</h2>
-    {% if pictures %}
-    <div>
-    {% for pic in pictures %}
-        <div class="img-wrapper">
-    		<img src="/media/{{ pic.picture }}" alt="{{ pic.name }}"/>
-            <div class="img_overlay">
-                <div class="description">
-                    {{ pic.name }}</br>
-                    {{ pic.description }}</br>
-                    {{ pic.location }}</br>
-                </div>
-            </div>
-        </div>
-    {% endfor %}
-{% else %}
-
-<!-- This is how it would look like if Cynthia could properly load the pictures -->
-<!-- 	There are no pictures in the gallery. </br>
-
-	
-
-	<div class="img">
-		<img src="https://images7.alphacoders.com/326/thumb-1920-326765.jpg">
-		<div class="img_overlay">
-			<div class="description">Name and Description</div>
-		</div>
-	</div>
-
-	<div class="img">
-		<img src="https://images7.alphacoders.com/326/thumb-1920-326765.jpg">
-		<div class="img_overlay">
-			<div class="description">Name and Description</div>
-		</div>
-	</div>
-
-	<div class="img">
-		<img src="https://images7.alphacoders.com/326/thumb-1920-326765.jpg">
-		<div class="img_overlay">
-			<div class="description">Name and Description</div>
-		</div>
-	</div> -->
-
-{% endif %}
-
-
 </div>
 
-{% else %} <!-- Else if user is not authenticated -->
-{% endif %} <!-- End of user.is_authenticated -->
-{% endblock %} <!-- End of background_image block -->
+{% if pictures %}
+    <div class="image-container">
+        {% for pic in pictures %}
+            <div class="img-wrapper">
+            <img src="/media/{{ pic.picture }}" alt="{{ pic.name }}"/>
+                <div class="img_overlay">
+                    <div class="description">
+                        {{ pic.name }}</br>
+                        {{ pic.description }}</br>
+                        {{ pic.location }}</br>                        
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
 
-{% block body_block %}
-<!-- Part for not logged in users -->
-{% if user.is_authenticated %}
 {% else %}
+<!-- page for unauthenticated users -->
 	<div id="signin-container">
         <div id="signin-box">
-
             <div class="margin-control">
                 <img src="../../../static/images/wandr-seal.png" alt="Wandr Logo" />
                 <h1>Welcome to Wandr</h1>
@@ -93,6 +55,5 @@
         </div>
     </div>
 {% endif %}
-
 
 {% endblock %}
