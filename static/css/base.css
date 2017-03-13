@@ -95,7 +95,7 @@ a {
 .page-wrap {
   min-height: 100%;
   /* equal to footer height */
-  margin-bottom: -70px;
+  margin-bottom: 70px;
 }
 .page-wrap:after {
   content: "";
