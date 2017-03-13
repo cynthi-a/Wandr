@@ -29,24 +29,29 @@ div#login-and-register-buttons {
     text-align: center;
 }
 
-a.button {
+.button {
     background-color: #8ED081; /* Green */
-    width: 100px;
     border: none;
-    color: black;
     padding: 15px 32px;
+    margin-top: 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     border: 0.5px solid #4B543B;
     font-size: 16px;
+    width: 40%;
 }
 
-a.button:hover {
+.button a {
+	color: black;
+	text-decoration: none;
+}
+
+.button a:hover {
     background-color: #75AB6A;
 }
 
-a.button:click {
+.button a:click {
     background-color: #415F3B;
 }
 
