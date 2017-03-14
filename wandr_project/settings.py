@@ -19,7 +19,7 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
-LOGIN_URL = '/wandr/login'
+LOGIN_URL = '/wandr/login/'
 
 # Cynthia: Needed for the contact form, Email does not get sent
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -131,7 +131,7 @@ REGISTRATION_OPEN = True
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 LOGIN_REDIRECT_URL = '/wandr/'
-LOGIN_URL = '/accounts/login/'
+#LOGIN_URL = '/accounts/login/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/

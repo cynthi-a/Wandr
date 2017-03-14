@@ -15,7 +15,7 @@
 
 h1#wandr-title {
 	font-size: 60px;
-	padding-top: 20px;
+	padding-top: 10px;
     padding-left: 5%;
 	text-align: left;
 }
@@ -33,7 +33,7 @@ div#login-and-register-buttons {
 .button {
     background-color: #8ED081; /* Green */
     border: none;
-    padding: 15px 32px;
+    padding: 10px 30px;
     margin-top: 20px;
     text-align: center;
     text-decoration: none;
