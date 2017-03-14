@@ -46,3 +46,11 @@ class ContactForm(forms.Form):
     contact_name = forms.CharField(required=True)
     contact_email = forms.EmailField(required=True)
     form_content = forms.CharField(required=True, widget=forms.Textarea)
+
+
+class BioForm(forms.ModelForm):
+    bio = forms.CharField(required=False, widget=forms.Textarea, help_text="Are you a pinniped?")
+
+    class Meta:
+        model = UserProfile
+        fields = ('bio',)

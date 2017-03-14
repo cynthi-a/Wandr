@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.core.urlresolvers import reverse
 from .forms import ContactForm
-from wandr.forms import UserForm, ProfilePictureForm, PictureForm, CoverPhotoForm
+from wandr.forms import UserForm, ProfilePictureForm, PictureForm, CoverPhotoForm, BioForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from registration.backends.simple.views import RegistrationView
@@ -269,3 +269,21 @@ def user_profile_view(request, user_id):
         'this_user': this_user
     }
     return render(request, 'wandr/user_profile.html', context_dict)
+
+
+@login_required
+def update_profile(request, user_id):
+    if request.method == 'POST':
+        form = BioForm(request.POST)
+        if form.is_valid():
+            userProfile = UserProfile.objects.get(user=request.user)
+            bio = form.cleaned_data['bio']
+            userProfile.bio = bio
+            userProfile.save()
+            return HttpResponseRedirect(reverse('user_profile', args=[user_id]))
+
+    else:
+
+        userProfile = UserProfile.objects.get ( pk=user_id )
+        form = BioForm ( initial={'bio': userProfile.bio} )
+        return render ( request, 'wandr/update_profile.html', {'form': form, 'user_id': user_id})

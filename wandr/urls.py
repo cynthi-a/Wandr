@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^profile/(?P<user_id>[0-9]+)/$', views.user_profile_view, name='user_profile'),
     url(r'^profile/(?P<user_id>[0-9]+)/upload_profile_picture/$', views.upload_profile_picture, name='upload_p_picture'),
     url(r'^profile/(?P<user_id>[0-9]+)/upload_cover_photo/$', views.upload_cover_photo, name='upload_cover_photo'),
+    url(r'^profile/(?P<user_id>[0-9]+)/update_profile/$', views.update_profile, name='update_profile'),
 ]

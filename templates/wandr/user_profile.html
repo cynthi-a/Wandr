@@ -63,6 +63,13 @@
     {% endif %}
     </div>
 
+<!-- User Bio -->
+    <div>
+        <h2>User Bio</h2>
+        <a href="update_profile">Edit</a><br />
+        {{ user.userprofile.bio }}
+    </div>
+
     <!-- Have Been List -->
     <div class="hbl-container">
         {% if this_user %}
