@@ -33,14 +33,23 @@ def register(request):
         user_form = UserForm(data=request.POST)
 
         if user_form.is_valid():
+            registered = True
             user = user_form.save()
             user.set_password(user.password)
             user.save()
 
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+
+            user = authenticate(username=username, password=password)
+
+            if user:
+            # If account is valid and active
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponseRedirect(reverse('index'))
         else:
             print(user_form.errors)
-
-        registered = True
 
     # Not a HTTP POST request so input is blank
     else:

@@ -4,16 +4,29 @@
 {% endblock %}
 {# I apologise for the mess of style tags, we can add them to a style sheet later #}
 {% block body_block %}
-<h1>This is the upload cover picture page.</h1>
+<div class="margin-control">
+<h1>Upload your cover picture</h1>
+	<div class="container col-sm-10">
+    	<form id="cover_photo_form" method="post" action="{% url 'upload_cover_photo' user_id %}" enctype="multipart/form-data">
+    	{% csrf_token %}
+<!-- 		{{ request.user }} -->
 
-    Upload here
-    <form id="cover_photo_form" method="post" action="{% url 'upload_cover_photo' user_id %}" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ request.user }}
-     <!-- Display each form -->
-     {{ cover_photo_form.as_p }}
+     	<!-- Display each form -->
+     	<!-- {{ cover_photo_form.as_p }} -->
 
-     <input type="submit" name="submit" value="Submit" />
-    </form>
-
+     	{% for field in cover_photo_form %}
+     	<div class="form-group row">
+     		<label for="{{ field.id_for_label }}" class="col-form-label col-sm-2">
+           		{{ field.label }}
+         	</label>
+         	<div class="col-sm-10">
+         		{{ field }}
+         		<!-- <input id="{{ field.id_for_label }}" type="{{ field.field.widget.input_type }}" name="{{ field.html_name }}" class="form-control" placeholder="{{ field.help_text }}"> -->
+         	</div>
+        </div>
+        {% endfor %}
+     	<input type="submit" class="btn btn-primary" name="submit" value="Submit" />
+    	</form>
+    </div>
+</div>
 {% endblock %}
