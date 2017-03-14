@@ -10,6 +10,7 @@
     <h1>Login to Wandr</h1>
         <form id="login_form" method="post" action="{% url 'login' %}">
             {% csrf_token %}
+
             <div class="form-group container col-sm-10">
             <input type="text" class="form-control"  name="username" value="" placeholder="Username" size="50" />
             </div>
