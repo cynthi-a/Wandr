@@ -7,7 +7,7 @@ from wandr.forms import UserForm, ProfilePictureForm, PictureForm, CoverPhotoFor
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from registration.backends.simple.views import RegistrationView
-from .models import User, HaveBeenList, Picture, UserProfile
+from .models import User, HaveBeenList, Picture, UserProfile, ToGoList
 
 # needed for the contact form email setup
 from django.core.mail import EmailMessage
@@ -86,6 +86,24 @@ def user_login(request):
     # If not POST
     else:
         return render(request, 'wandr/login.html', {})
+
+
+@login_required
+def add_to_tgl(request, user_id, picture_id):
+    this_user = request.user
+    tgl = ToGoList.objects.get(belongs_to=this_user)
+    hbl_user = User.objects.get(pk=user_id)
+    hbl = HaveBeenList.objects.get(belongs_to=hbl_user)
+
+    print 'tgl id is ' + str(tgl.pk)
+    picture = Picture.objects.get(pk=picture_id)
+    picture.to_go_list.add(tgl)
+    picture.save()
+    tgl.save()
+
+    print 'picture id is ' + str(picture_id)
+
+    return HttpResponseRedirect(reverse('user_profile', args=[user_id]))
 
 
 @login_required
@@ -271,11 +289,13 @@ def user_profile_view(request, user_id):
     else:
         this_user = False
 
+    to_go_list = ToGoList.objects.get(belongs_to=user_id)
     have_been_list = HaveBeenList.objects.get(belongs_to=user_id)
     context_dict = {
         'hbl': have_been_list,
         'user': u,
-        'this_user': this_user
+        'this_user': this_user,
+        'tgl': to_go_list,
     }
     return render(request, 'wandr/user_profile.html', context_dict)
 

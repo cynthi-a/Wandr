@@ -141,24 +141,64 @@
 
 .hbl-container {
     float:left;
-    width:50%;
+    width:48%;
+    margin-left:2%;
     height:300px;
     border-top:1px solid #cfcfcf;
     border-right:1px solid #cfcfcf;
     box-sizing: border-box;
 }
-.profile-list-image {
-    width:32%;
-    max-height:300px;
-    padding:20px;
-    box-sizing: border-box
-}
+
 .tgl-container {
     float:left;
-    width:50%;
+    width:48%;
+    margin-left:2%;
     height:300px;
     border-top:1px solid #cfcfcf;
 }
-tgl-container h2 {
-    margin:50px 0;
+
+.profile-list-image {
+    min-width: 100%;
+    min-height:100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.list-img-container {
+    margin-top: 20px;
+    width: 46%;
+    margin-right: 2%;
+    padding-bottom: 30%;
+    border: 2px solid #96bca5;
+    float: left;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: #333;
+}
+.add-to-tgl {
+    width: 50px;
+    height: 50px;
+    background: white;
+    position: absolute;
+    z-index: 5;
+    right: 10px;
+    top: 10px;
+    border-radius:5px;
+    overflow: hidden;
+    border:1px solid #666;
+    box-shadow: 2px 3px 5px #333;
+    opacity:0;
+    transform:scale(0);
+    transition: all 0.3s cubic-bezier(0.56, 0.08, 0.24, 2.04);
+}
+.add-to-tgl a img {
+    width:50px;
+    height:50px;
+}
+.list-img-container:hover .add-to-tgl {
+    opacity: 0.9;
+    transform: scale(1);
 }

@@ -63,13 +63,6 @@
     {% endif %}
     </div>
 
-<!-- User Bio -->
-    <div>
-        <h2>User Bio</h2>
-        <a href="update_profile">Edit</a><br />
-        {{ user.userprofile.bio }}
-    </div>
-
     <!-- Have Been List -->
     <div class="hbl-container">
         {% if this_user %}
@@ -87,14 +80,27 @@
         {% endif %}
 
         {% for picture in hbl.picture_set.all %}
+            <div class="list-img-container">
+                <div class="add-to-tgl">
+                    <a href="{% url 'add_to_tgl' user.id picture.pk %}">
+                        <img src="../../../static/images/plus.png">
+                    </a>
+                </div>
             <img class="profile-list-image" src="/media/{{ picture.picture }}" alt="{{ picture.name }}">
+            </div>
         {%  endfor %}
+
 
     </div>
 
     <!-- To Go List -->
     <div class="tgl-container">
         <h2>To Go List</h2>
+        {% for picture in tgl.picture_set.all %}
+            <div class="list-img-container">
+                <img class="profile-list-image" src="/media/{{ picture.picture }}" alt="{{ picture.name }}">
+            </div>
+        {% endfor %}
 
     </div>
 

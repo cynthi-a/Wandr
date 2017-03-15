@@ -14,10 +14,18 @@ class HaveBeenList(models.Model):
 
 def create_hbl(sender, **kwargs):
     if kwargs['created']:
-        have_been_list = HaveBeenList.objects.create(belongs_to=kwargs['instance'])
         user_profile = UserProfile.objects.create(user=kwargs['instance'])
+        have_been_list = HaveBeenList.objects.create(belongs_to=kwargs['instance'])
+        to_go_list = ToGoList.objects.create(belongs_to=kwargs['instance'])
 
 post_save.connect(create_hbl, sender=User)
+
+
+class ToGoList(models.Model):
+    belongs_to = models.OneToOneField(User)
+
+    def __unicode__(self):
+        return str(self.pk)
 
 
 class UserProfile(models.Model):
@@ -38,6 +46,7 @@ class Picture(models.Model):
     picture = models.ImageField(upload_to='travel_images', blank=False)
     likes = models.IntegerField(default=0)
     have_been_list = models.ForeignKey(HaveBeenList, on_delete=models.CASCADE)
+    to_go_list = models.ManyToManyField(ToGoList)
     location = models.CharField(max_length=128, unique=False)
 
     def __unicode__(self):
