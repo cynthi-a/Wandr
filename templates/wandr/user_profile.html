@@ -81,15 +81,14 @@
 
         {% for picture in hbl.picture_set.all %}
             <div class="list-img-container">
+            <!-- If logged in user is on their own profile dont allow to add pictures to tgl -->
                 {% if this_user %}
                 {% else %}
-                    {% if to_go_list.picture_set.all.exists %}
                 <div class="add-to-tgl">
                     <a href="{% url 'add_to_tgl' user.id picture.pk %}">
                         <img src="../../../static/images/plus.png">
                     </a>
                 </div>
-                    {% endif %}
                 {% endif %}
             <img class="profile-list-image" src="/media/{{ picture.picture }}" alt="{{ picture.name }}">
             </div>
