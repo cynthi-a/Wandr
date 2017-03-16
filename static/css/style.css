@@ -90,7 +90,11 @@
 }
 
 .profile-picture-img {
-    width:250px;
+
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
 }
 .edit-pencil-img {
     height:60px;
