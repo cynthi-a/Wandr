@@ -107,6 +107,39 @@ def add_to_tgl(request, user_id, picture_id):
 
 
 @login_required
+def remove_from_tgl(request, user_id, picture_id):
+    this_user = request.user
+    tgl = ToGoList.objects.get(belongs_to=this_user)
+    hbl_user = User.objects.get(pk=user_id)
+    hbl = HaveBeenList.objects.get(belongs_to=hbl_user)
+
+    print 'tgl id is ' + str(tgl.pk)
+    picture = Picture.objects.get(pk=picture_id)
+    picture.to_go_list.remove(tgl)
+    picture.save()
+    tgl.save()
+
+    print 'picture id is ' + str(picture_id)
+
+    return HttpResponseRedirect(reverse('user_profile', args=[user_id]))
+
+
+@login_required
+def remove_from_hbl(request, user_id, picture_id):
+    this_user = request.user
+    # tgl = ToGoList.objects.get(belongs_to=this_user)
+    hbl_user = User.objects.get(pk=user_id)
+    hbl = HaveBeenList.objects.get(belongs_to=hbl_user)
+
+    picture = Picture.objects.get(pk=picture_id)
+    picture.delete()
+
+    print 'picture id is ' + str(picture_id)
+
+    return HttpResponseRedirect(reverse('user_profile', args=[user_id]))
+
+
+@login_required
 # def upload_profile_picture(request, user_id):
 def upload_profile_picture(request, user_id):
     # user_profile = UserProfile.objects.get(user=request.user)

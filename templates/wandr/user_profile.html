@@ -81,9 +81,15 @@
 
         {% for picture in hbl.picture_set.all %}
             <div class="list-img-container">
-            <!-- If logged in user is on their own profile dont allow to add pictures to tgl -->
+            <!-- If logged in user they can delete hbl photos -->
                 {% if this_user %}
+                <div class="add-to-tgl">
+                    <a href="{% url 'remove_from_hbl' user.id picture.pk %}">
+                        <img src="../../../static/images/delete.png">
+                    </a>
+                </div>
                 {% else %}
+                <!-- If logged in user is on their own profile don't allow to add pictures to tgl -->
                 <div class="add-to-tgl">
                     <a href="{% url 'add_to_tgl' user.id picture.pk %}">
                         <img src="../../../static/images/plus.png">
@@ -94,7 +100,6 @@
             </div>
         {% endfor %}
 
-
     </div>
 
     <!-- To Go List -->
@@ -102,6 +107,13 @@
         <h2>To Go List</h2>
         {% for picture in tgl.picture_set.all %}
             <div class="list-img-container">
+                {% if this_user %}
+                <div class="add-to-tgl">
+                    <a href="{% url 'remove_from_tgl' user.id picture.pk %}">
+                        <img src="../../../static/images/delete.png">
+                    </a>
+                </div>
+                {% endif %}
                 <img class="profile-list-image" src="/media/{{ picture.picture }}" alt="{{ picture.name }}">
             </div>
         {% endfor %}

@@ -15,4 +15,6 @@ urlpatterns = [
     url(r'^profile/(?P<user_id>[0-9]+)/upload_cover_photo/$', views.upload_cover_photo, name='upload_cover_photo'),
     url(r'^profile/(?P<user_id>[0-9]+)/update_profile/$', views.update_profile, name='update_profile'),
     url(r'^profile/(?P<user_id>[0-9]+)/add/(?P<picture_id>[0-9]+)$', views.add_to_tgl, name='add_to_tgl'),
+    url(r'^profile/(?P<user_id>[0-9]+)/remove_tgl/(?P<picture_id>[0-9]+)$', views.remove_from_tgl, name='remove_from_tgl'),
+    url(r'^profile/(?P<user_id>[0-9]+)/remove_hbl/(?P<picture_id>[0-9]+)$', views.remove_from_hbl, name='remove_from_hbl'),
 ]
