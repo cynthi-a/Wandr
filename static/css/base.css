@@ -111,6 +111,7 @@ footer {
 footer.site-footer, .page-wrap:after {
   	çheight: 70px;
 	clear:both;
+	margin-top: 2%;
 }
 
 footer a {

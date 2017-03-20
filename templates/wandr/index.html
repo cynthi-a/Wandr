@@ -17,24 +17,52 @@
     <h1 id="wandr-title">Wandr.</h1>
 </div>
 
-<div class="margin-control">
+<div class="margin-control ">
     <h2 class="hotThisWeek">Hot this week</h2>
 </div>
 
+<div class="container-fluid">
 {% if pictures %}
-    <div class="image-container">
+    <div class="row">
+    <div class="col-12">
         {% for pic in pictures %}
-            <div class="img-wrapper">
+            <div class="img-wrapper col-4">
             <img src="/media/{{ pic.picture }}" alt="{{ pic.name }}"/>
-                <div class="img_overlay">
+                
+               
+                <div class="img_overlay" data-toggle="modal" data-target="#{{ pic.picture_id }}">
                     <div class="description">
-                        {{ pic.name }}</br>
-                        {{ pic.description }}</br>
-                        {{ pic.location }}</br>                        
+                        <h4>{{ pic.name }}</h4>
+                        <p>{{ pic.description }}</br>
+                        {{ pic.location }}</br></p>
                     </div>
                 </div>
+
+
+                <div id="{{ pic.picture_id }}" class="modal fade" role="dialog">
+                      <div class="modal-dialog modal-lg">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">{{ pic.name }}</h4>
+                          </div>
+                          <div class="modal-body">
+                          <img src="/media/{{ pic.picture }}" alt="{{ pic.name }}"/></br>
+                            <p>{{ pic.description }}</br></p>
+                          </div>
+                          <div class="modal-footer">
+                            {{ pic.location }}</br>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
             </div>
         {% endfor %}
+    </div>
     </div>
 {% endif %}
 

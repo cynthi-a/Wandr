@@ -1,6 +1,6 @@
 .img-wrapper {
-    margin-top: 10px;
-    margin-right: 40px;
+/*    margin-top: 10px;
+    margin-right: 40px;*/
     width: 44.5%;
     padding-bottom: 30%;
     border: 2px solid #96bca5;
@@ -41,6 +41,10 @@
 .img-wrapper:hover .img_overlay {
     width: 100%;
     border: 1px solid #777;
+}
+
+.modal-body img {
+  height: auto;
 }
 
 div.desc {
