@@ -183,8 +183,15 @@ def upload_profile_picture(request, user_id):
 
 
 @login_required
-def like_picture(request):
-    return HttpResponse("Picture liked.")
+def like_picture(request, user_id, picture_id):
+    if request.method == 'GET':
+        if picture_id:
+            pic = Picture.objects.get(picture_id=int(picture_id))
+            if pic:
+                likes = pic.likes + 1
+                pic.likes = likes
+                pic.save()
+    return HttpResponseRedirect(reverse('user_profile', args=[user_id]))
 
 
 @login_required
