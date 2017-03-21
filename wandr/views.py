@@ -296,6 +296,7 @@ def add_picture(request):
     if request.method == 'POST':
         picture_form = PictureForm(request.POST, request.FILES)
         user_id = request.user.pk
+
         if picture_form.is_valid():
             picture = picture_form.save(commit=False)
             picture.have_been_list = HaveBeenList.objects.get(belongs_to=user_id)
@@ -306,7 +307,8 @@ def add_picture(request):
         else:
             print(picture_form.errors)
 
-    picture_form = PictureForm()
+    else:
+        picture_form = PictureForm()
 
     return render(request, 'wandr/add_picture.html', {'picture_form':picture_form})
 
