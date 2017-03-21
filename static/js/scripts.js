@@ -5,7 +5,7 @@
 function menuContraction(){
 	var mq = window.matchMedia( "(min-width: 992px)" );
 	if (mq.matches) {
-  		if(window.scrollY > '50'){
+  		if(window.scrollY > '20'){
   			document.getElementById("menu-bar").style.padding = '0px';
   		}
   		else {
