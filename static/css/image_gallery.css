@@ -20,6 +20,7 @@
     width: 90%;
     object-fit: cover;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .image-container {
@@ -38,6 +39,7 @@
     width: 0;
     height: 90%;
     transition: .5s ease;
+    cursor: pointer;
 }
 
 .img-wrapper:hover .img_overlay {
@@ -61,4 +63,10 @@ div.description {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
-
+.img-wrapper .lightbox-img {
+    width: 90%;
+    height: 90%;
+    position: relative;
+    top:0;
+    left:0;
+}
