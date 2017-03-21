@@ -63,6 +63,7 @@ h2 {
 	background: #8ED081;
 	border:0;
 	font-size:18px;
+	transition:padding 0.3s ease;
 }
 .nav-link.active img {
 	margin:0 20px;

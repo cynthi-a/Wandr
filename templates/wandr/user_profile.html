@@ -107,6 +107,9 @@
                 <div class="like-picture">
                     <a href="{% url 'like_picture' user.id picture.pk %}">
                         <img src="../../../static/images/heart.png">
+                        <div class="like-count">
+                            {{ picture.likes }}
+                        </div>
                     </a>
                 </div>
 <!-- changes end -->
@@ -141,6 +144,9 @@
                 <div class="like-picture">
                     <a href="{% url 'like_picture' user.id picture.pk %}">
                         <img src="../../../static/images/heart.png">
+                        <div class="like-count">
+                            {{ picture.likes }}
+                        </div>
                     </a>
                 </div>
 <!-- changes end -->
@@ -150,12 +156,6 @@
                 <img class="profile-list-image" src="/media/{{ picture.picture }}" alt="{{ picture.name }}">
             </div>
 
-<!-- change start -->
-            <div class="like-count">
-                    <strong> {{ picture.likes }} </strong>
-            </div>
-
-<!-- change end -->
 
         {% endfor %}
 
