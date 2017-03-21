@@ -15,6 +15,67 @@
     </title>
 </head>
 <body>
+
+<!-- Nav Bar -->
+
+<nav id="menu-bar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="nav-link active" href="{% url 'index' %}">
+                <img src="../../../static/images/logo-50.png" alt="Wandr Logo" />
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a class="nav-link" href="{% url 'add_picture' %}">Submit Picture</a></li>
+                <li><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                {% if user.is_authenticated %}
+                <li><a class="nav-link" href="{% url 'auth_logout' %}?next=/wandr/">Logout</a></li>
+                <li><a class="nav-link" href="{% url 'login' %}">Sign In</a></li>
+                <li><a class="nav-link" href="{% url 'register' %}">Sign Up</a></li></li>
+                {% endif %}
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li id="menu-profile">
+                {% if user.is_authenticated %}
+                <a href="{% url 'user_profile' request.user.pk %}">
+                Hi, {{ request.user.username }}
+                {% if request.user.userprofile.picture %}
+                <div id="profile-icon-wrapper">
+                    <img src="/media/{{ request.user.userprofile.picture }}" alt="user icon" />
+                </div>
+                {% endif %}
+                </a>
+                {%  endif %}
+                </li>
+{#        <li><a href="#">Link</a></li>#}
+{#        <li class="dropdown">#}
+{#          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>#}
+{#          <ul class="dropdown-menu">#}
+{#            <li><a href="#">Action</a></li>#}
+{#            <li><a href="#">Another action</a></li>#}
+{#            <li><a href="#">Something else here</a></li>#}
+{#            <li role="separator" class="divider"></li>#}
+{#            <li><a href="#">Separated link</a></li>#}
+{#          </ul>#}
+{#        </li>#}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!-- End of Nav Bar -->
+
     <div class="page-wrap">
         {% block background_image %}
         {% endblock %}
@@ -24,55 +85,31 @@
 {#    </div>#}
 
 
-    <div id="menu-profile">
-        {% if user.is_authenticated %}
-            <a href="{% url 'user_profile' request.user.pk %}">
-            Hi, {{ request.user.username }}
-            {% if request.user.userprofile.picture %}
-            <div id="profile-icon-wrapper">
-                    <img src="/media/{{ request.user.userprofile.picture }}" alt="user icon" />
-    {#                <img src="../../../static/images/user-icon.jpg" alt="user icon" />#}
-            </div>
-            {% endif %}
-            </a>
-        {%  endif %}
-    </div>
 
-<!--     <ul>
-        <li><a href="{% url 'index' %}"><img src="../../../static/images/logo-50.png" alt="Wandr Logo" style="margin: -25px 0px -20px 20px;"/></a></li>
-        <li><a href="{% url 'add_picture' %}">Add a Picture</a></li>
-        <li><a href="{% url 'about' %}">About</a></li>
-        <li><a href="{% url 'contact' %}">Contact</a></li>
-        {% if user.is_authenticated %}
-            <li><a href="{% url 'auth_logout' %}?next=/wandr/">Log Out</a></li>
-        {% else %}
-            <li><a href="{% url 'auth_login' %}">Sign In</a></li>
-            <li><a href="{% url 'registration_register' %}">Sign Up</a></li>
-        {% endif %}
-    </ul> -->
 
-<ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link active" href="{% url 'index' %}"><img src="../../../static/images/logo-50.png" alt="Wandr Logo" style="margin: -25px 0px -20px 20px;"/></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'add_picture' %}">Submit Picture</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'about' %}">About</a>
-  </li>
-  {% if user.is_authenticated %}
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'auth_logout' %}?next=/wandr/">Logout</a>
-  </li>
-  {% else %}
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'login' %}">Sign In</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'register' %}">Sign Up</a></li>
-  {% endif %}
-</ul>
+
+{#<ul class="nav">#}
+{#  <li class="nav-item">#}
+{#    <a class="nav-link active" href="{% url 'index' %}"><img src="../../../static/images/logo-50.png" alt="Wandr Logo" style="margin: -25px 0px -20px 20px;"/></a>#}
+{#  </li>#}
+{#  <li class="nav-item">#}
+{#    <a class="nav-link" href="{% url 'add_picture' %}">Submit Picture</a>#}
+{#  </li>#}
+{#  <li class="nav-item">#}
+{#    <a class="nav-link" href="{% url 'about' %}">About</a>#}
+{#  </li>#}
+{#  {% if user.is_authenticated %}#}
+{#  <li class="nav-item">#}
+{#    <a class="nav-link" href="{% url 'auth_logout' %}?next=/wandr/">Logout</a>#}
+{#  </li>#}
+{#  {% else %}#}
+{#  <li class="nav-item">#}
+{#    <a class="nav-link" href="{% url 'login' %}">Sign In</a>#}
+{#  </li>#}
+{#  <li class="nav-item">#}
+{#    <a class="nav-link" href="{% url 'register' %}">Sign Up</a></li>#}
+{#  {% endif %}#}
+{#</ul>#}
 
 <!-- <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -1,5 +1,5 @@
 body {
-	padding-top: 40px;
+	padding-top: 70px;
 	font-size: 16px;
 	font-family: "Helvetica", Helvetica, sans-serif;
 	margin:0;
@@ -23,37 +23,49 @@ h2 {
 	color: #354b48;
 }
 
-ul {
-	border-right: 1px solid #555;
-	font-weight: bold;
-	position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    list-style-type: none;
-    padding: 0;
-    overflow: hidden;
-    background-color: #8ED081;
-}
+/*ul {*/
+	/*border-right: 1px solid #555;*/
+	/*font-weight: bold;*/
+	/*position: fixed;*/
+    /*top: 0;*/
+    /*right: 0;*/
+    /*left: 0;*/
+    /*list-style-type: none;*/
+    /*padding: 0;*/
+    /*overflow: hidden;*/
+    /*background-color: #8ED081;*/
+/*}*/
 
-ul a {
-	font-size: 18px;
-	border: 1px #555;
-    display: block;
-    color: #2F4F4F;
-    text-align: center;
-    padding: 25px 20px 14px 16px;
-    text-decoration: none;
-    float: left;
-}
+/*ul a {*/
+	/*font-size: 18px;*/
+	/*border: 1px #555;*/
+    /*display: block;*/
+    /*color: #2F4F4F;*/
+    /*text-align: center;*/
+    /*padding: 25px 20px 14px 16px;*/
+    /*text-decoration: none;*/
+    /*float: left;*/
+/*}*/
 
-ul a:hover {
-	background-color: #82BE76;
-	color: white;
-}
+/*ul a:hover {*/
+	/*background-color: #82BE76;*/
+	/*color: white;*/
+/*}*/
 
-ul a:active {
-	background-color: #696969;
+/*ul a:active {*/
+	/*background-color: #696969;*/
+/*}*/
+
+#menu-bar {
+	height: 50px;
+    padding: 20px 0;
+    box-sizing: content-box;
+	background: #8ED081;
+	border:0;
+	font-size:18px;
+}
+.nav-link.active img {
+	margin:0 20px;
 }
 
 p.justified {
@@ -67,24 +79,30 @@ p.justified {
 }
 
 #menu-profile {
-	position:fixed;
 	z-index:5;
 	top:0;
     right:20px;
 	line-height:40px;
+	padding:0;
+	margin:0;
+}
+#menu-profile a {
+	padding:0;
+	margin:0;
+	line-height:48px;
 }
 #profile-icon-wrapper {
     border-radius:50%;
     overflow: hidden;
-    height:45px;
-    width:45px;
+    height:50px;
+    width:50px;
 	float:right;
 	margin-left:10px;
 
 }
 #profile-icon-wrapper img {
-	height:45px;
-	width:45px;
+	height:50px;
+	width:50px;
 }
 
 a {
