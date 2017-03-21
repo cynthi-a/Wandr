@@ -56,6 +56,10 @@ div#login-and-register-buttons {
     background-color: #415F3B;
 }
 
+.col-4 {
+    width: 90%;
+}
+
 #signin-container {
     height: 100vh;
     display: flex;

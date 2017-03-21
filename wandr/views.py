@@ -183,6 +183,11 @@ def upload_profile_picture(request, user_id):
 
 
 @login_required
+def like_picture(request):
+    return HttpResponse("Picture liked.")
+
+
+@login_required
 def upload_cover_photo(request, user_id):
     if request.method == 'POST':
         user = request.user

@@ -95,6 +95,15 @@
                         <img src="../../../static/images/plus.png">
                     </a>
                 </div>
+
+<!-- cynthias changes start -->
+                <div class="like-picture">
+                    <a href="{% url 'like_picture' user.id picture.pk %}">
+                        <img src="../../../static/images/heart.png">
+                    </a>
+                </div>
+<!-- changes end -->
+
                 {% endif %}
             <img class="profile-list-image" src="/media/{{ picture.picture }}" alt="{{ picture.name }}">
             </div>
@@ -113,6 +122,23 @@
                         <img src="../../../static/images/delete.png">
                     </a>
                 </div>
+<!-- cynthias changes start -->                
+                {% else %}
+
+                <div class="add-to-tgl">
+                    <a href="{% url 'add_to_tgl' user.id picture.pk %}">
+                        <img src="../../../static/images/plus.png">
+                    </a>
+                </div>
+
+                <div class="like-picture">
+                    <a href="{% url 'like_picture' user.id picture.pk %}">
+                        <img src="../../../static/images/heart.png">
+                    </a>
+                </div>
+<!-- changes end -->
+
+
                 {% endif %}
                 <img class="profile-list-image" src="/media/{{ picture.picture }}" alt="{{ picture.name }}">
             </div>
