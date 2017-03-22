@@ -16,12 +16,12 @@
     <div id="cover-photo-container">
         {% if user.userprofile.cover_photo %}
             {% if this_user %}
-                <div class="edit-cover-photo-icon"><a href="upload_cover_photo"><img src="../../../static/images/edit_pencil.jpg"></a></div>
+                <div class="edit-cover-photo-icon"><a href="{% url 'upload_cover_photo' user.id %}"><img src="../../../static/images/edit_pencil.jpg"></a></div>
             {% endif %}
             <div id="cover-photo-wrapper" style="background:url('/media/{{ user.userprofile.cover_photo }}');"></div>
         {% else %}
             {% if this_user %}
-                <a href="upload_cover_photo">
+                <a href="{% url 'upload_cover_photo' user.id %}">
                     <div id="empty-cover-photo-wrapper">
                         <h1>Upload your cover photo</h1><img src="../../../static/images/plus.png" alt="">
                     </div>
@@ -36,7 +36,7 @@
             <div id="profile-picture-wrapper">
                 {% if this_user %}
                     <div class="edit-profile-pic-icon">
-                        <a href="upload_profile_picture">
+                        <a href="{% url 'upload_p_picture' user.id %}">
                             <img class="edit-pencil-img" src="../../../static/images/edit_pencil.jpg" />
                         </a>
                     </div>
@@ -45,9 +45,8 @@
             </div>
         {% else %}
             <div id="empty-profile-picture-wrapper">
-{# Change to dynamic urls #}
                 {% if this_user %}
-                    <a href="upload_profile_picture">
+                    <a href="{% url 'upload_p_picture' user.id %}">
                         <img src="../../../static/images/add-profile-picture.jpg" alt="profile_image">
                     </a>
                 {% endif %}
@@ -67,9 +66,9 @@
         <div class="col-md-12">
             <!-- User Bio -->
             <div class="col-md-4">
-                <h2>User Bio</h2>
-                <a href="update_profile">Edit</a>
-                {{ user.userprofile.bio }}
+                <h2>User Bio<a href="{% url 'update_profile' user.id %}"><img class="edit-pencil-img" src="../../../static/images/edit_pencil.jpg" /></a></h2>
+                
+                <p>{{ user.userprofile.bio }}</p>
             </div>
 
             <!-- User Info -->
@@ -90,11 +89,10 @@
         <div class="hbl-container col-md-6">
             <div class="hbl-title-container">
             {% if this_user %}
-                <h2>Your Have Been List</h2>
+                <h2>Have Been List</h2>
 
                 <a href="{% url 'add_picture' %}">
                     <div class="hbl-add-picture-button">
-                        <h3>Add</h3>
                         <img src="{% static "/images/plus.png" %}" alt="add picture">
                     </div>
                 </a>

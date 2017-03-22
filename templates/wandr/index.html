@@ -77,13 +77,13 @@
             {% for hbl in user_ranking %}
                 <li class="list-group-item justify-content-between">
                     <a href="{% url 'user_profile' hbl %}"><strong>{{ hbl.belongs_to.username }}</strong></a>
-                    <span class="badge badge-default badge-pill">{{ hbl.total_likes }}</span>
+                    <span class="badge badge-default badge-pill">{{ hbl.total_likes }} Likes</span>
                 </li>
             {% endfor %}
         </ul>
 </div>
 
-
+<div class="page-end"></div>
 {% endif %}
 
 {% else %}
@@ -104,5 +104,4 @@
     </div>
 {% endif %}
 
-<div class="page-end"></div>
 {% endblock %}

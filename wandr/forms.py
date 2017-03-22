@@ -49,7 +49,7 @@ class ContactForm(forms.Form):
 
 
 class BioForm(forms.ModelForm):
-    bio = forms.CharField(required=False, widget=forms.Textarea, help_text="Are you a pinniped?")
+    bio = forms.CharField(required=False, widget=forms.Textarea, help_text="Tell the community about yourself.")
 
     class Meta:
         model = UserProfile

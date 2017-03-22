@@ -3,16 +3,25 @@
    Update Profile - User {{ user.username }}
 {% endblock %}
 {% block body_block %}
-<h1>Update your bio</h1>
 
-    <form method="POST" action="{% url 'update_profile' user_id %}" enctype="multipart/form-data">
-    {% csrf_token %}
-    <label>
-        Bio:
-    </label><br />
-    {{ form.bio }}
+<h1>Edit Your Bio</h1>
+	<div class="container col-sm-12">
+	    <form method="POST" id="bio" action="{% url 'update_profile' user_id %}" enctype="multipart/form-data">
+	    {% csrf_token %}
 
-    <input type="submit" name="submit" value="Submit" />
-    </form>
+	    {% for field in form %}
+	         <div class="form-group row">
+	         	<!-- <label for="{{ field.id_for_label }}" class="col-form-label col-sm-2">
+	           		{{ field.label }}
+	         	</label> -->
+	         	<div class="col-sm-12">
+	         	<!-- 	{{ field }} -->
+	         		<input id="{{ field.id_for_label }}" type="{{ field.field.widget.input_type }}" name="{{ field.html_name }}" class="form-control" placeholder="{{ field.help_text }}">
+	         	</div>
+	        </div>
+	        {% endfor %}
+	         <input type="submit" class="btn btn-primary" name="submit" value="Save" />
+	    </form>
+	</div>
 
 {% endblock %}
