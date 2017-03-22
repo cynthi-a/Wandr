@@ -60,6 +60,11 @@ def register(request):
                   {'user_form': user_form, 'registered': registered})
 
 
+def picture_overview(request):
+    picture_list = Picture.objects.order_by('-likes')
+    context_dict = {'pictures': picture_list, }
+    return render(request, 'wandr/picture_overview.html', context=context_dict)
+
 # Created 01.03
 def user_login(request):
     # If POST

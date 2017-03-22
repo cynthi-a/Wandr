@@ -2,24 +2,18 @@
 {% load staticfiles %}
 
 {% block css_block %}
-    <link rel="stylesheet" href="{% static "css/index.css" %}" />
     <link rel="stylesheet" href="{% static "css/image_gallery.css" %}" />
 {% endblock %}
 
 {% block title_block %}
-	Wandr
+	All Pictures
 {% endblock %}
 
 {% block body_block %}
-<!-- Page for logged in users -->
-{% if user.is_authenticated %}
-<div class="parallax">
-    <h1 id="wandr-title">Wandr.</h1>
-</div>
+	<div class="margin-control ">
+    	<h1>Picture Overview</h2>
+	</div>
 
-<div class="margin-control ">
-    <h2 class="hotThisWeek">Hot this week</h2>
-</div>
 
 <div class="container-fluid">
 {% if pictures %}
@@ -64,30 +58,8 @@
             </div>
         {% endfor %}
     </div>
+    {% endif %}
 </div>
 
-<div class="button-centred">
-    <a href="{% url 'picture_overview' %}"><button type="button" id="more" class="btn btn-default">More Pictures</button></span></a>
-</div>
-
-{% endif %}
-
-{% else %}
-<!-- page for unauthenticated users -->
-	<div id="signin-container">
-        <div id="signin-box">
-            <div class="margin-control">
-                <img src="../../../static/images/wandr-seal.png" alt="Wandr Logo" />
-                <h1>Welcome to Wandr</h1>
-            </div>
-
-            <div id="login-and-register-buttons">
-                <div class="button btn"><a class="btn" href="{% url 'register' %}">Register here</a></div>
-                </br>
-                <div class="button btn"><a class="btn" href="{% url 'login' %}">Sign In</a></div>
-            </div>
-        </div>
-    </div>
-{% endif %}
 
 {% endblock %}
