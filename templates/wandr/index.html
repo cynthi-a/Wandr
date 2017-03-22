@@ -53,7 +53,7 @@
                             <p>{{ pic.description }}</br></p>
                           </div>
                           <div class="modal-footer">
-                            User: {{ pic.have_been_list.belongs_to.username }}</br>
+                            User: <a href="{% url 'user_profile' pic.have_been_list %}">{{ pic.have_been_list.belongs_to.username }}</a></br>
                             Location: {{ pic.location }}</br>
                           </div>
                         </div>

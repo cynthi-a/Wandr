@@ -17,7 +17,7 @@ from django.template.loader import get_template
 
 
 def index(request):
-    picture_list = Picture.objects.order_by('likes')
+    picture_list = Picture.objects.order_by('-likes')[:6]
     user_id = request.user.pk
 
     context_dict = {'pictures': picture_list, 'user_id': user_id}
