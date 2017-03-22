@@ -62,7 +62,8 @@ def add_picture(userid, name, description, location, picture):
 
     url_picture = picture
     image_content = ContentFile(requests.get(url_picture).content)
-    pic = Picture.objects.create(name=name, description=description, picture=image_content, location=location, have_been_list=h)
+    pic = Picture.objects.create(name=name, description=description, location=location, have_been_list=h)
+    pic.picture.save("picture.jpg", image_content)
 
     pic.save()
     return pic
