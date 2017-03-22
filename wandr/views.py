@@ -6,7 +6,7 @@ from .forms import ContactForm
 from wandr.forms import UserForm, ProfilePictureForm, PictureForm, CoverPhotoForm, BioForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from registration.backends.simple.views import RegistrationView
+#from registration.backends.simple.views import RegistrationView
 from .models import User, HaveBeenList, Picture, UserProfile, ToGoList
 
 # needed for the contact form email setup
@@ -319,9 +319,9 @@ def add_picture(request):
 
 
 # Registration - redirect user to index after registration 04.03 Cristina
-class WandrRegistrationView(RegistrationView):
+'''class WandrRegistrationView(RegistrationView):
    def get_success_url(self, user):
-        return reverse('index')
+        return reverse('index')'''
 
 
 @login_required
