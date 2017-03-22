@@ -79,17 +79,17 @@
             <!-- User Info -->
             <div class="col-md-4 col-md-push-4">
                 <h2>User Info</h2>
-                <div class="col-md-6">
-                    <div class="col-md-5">
+                <div class="col-md-12">
+                    <div class="col-md-3">
                         <span class="glyphicon glyphicon-home"></span>
                     </div>
-                    <p class="text-justify"> {{ user.userprofile.home_town }} </p>
+                    <h4> {{ user.userprofile.home_town }} </h4>
                 </div>
-                <div class="col-md-6">
-                    <div class="col-md-5">
+                <div class="col-md-12">
+                    <div class="col-md-3">
                         <span class="glyphicon glyphicon-tags"></span>
                     </div>
-                    {{ user.userprofile.tags }}
+                    <h4>{{ user.userprofile.tags }}</h4>
                 </div>
             </div>
         </div>
