@@ -47,7 +47,7 @@
             <div id="empty-profile-picture-wrapper">
                 {% if this_user %}
                     <a href="{% url 'upload_p_picture' user.id %}">
-                        <img src="../../../static/images/add-profile-picture.jpg" alt="profile_image">
+                        <img src="{% static '/images/add-profile-picture.jpg' %}" alt="profile_image">
                     </a>
                 {% endif %}
             </div>
@@ -68,12 +68,10 @@
             <div class="col-md-4">
 
             {% if this_user %}
-                <h2>About You<a href="{% url 'update_profile' user.id %}"><img class="edit-pencil-img" src="../../../static/images/edit_pencil.jpg" /></a></h2>
+                <h2>About You<a href="{% url 'update_profile' user.id %}"><img class="edit-pencil-img" src="{% static '/images/edit_pencil.jpg' %}" /></a></h2>
             {% else %}
                 <h2>{{ user.username }}'s Bio</h2>
             {% endif %}    
-
-            
                 <p class="text-justify">{{ user.userprofile.bio }}</p>
             </div>
 
@@ -81,16 +79,24 @@
             <div class="col-md-4 col-md-push-4">
                 <h2>User Info</h2>
                 <div class="col-md-12">
-                    <div class="col-md-3">
-                        <span class="glyphicon glyphicon-home"></span>
-                    </div>
-                    <h4> {{ user.userprofile.home_town }} </h4>
+                    <h4> 
+                        <div class="col-md-3">
+                            <span class="glyphicon glyphicon-home"></span>
+                        </div>
+                        <div class="col-md-9">
+                            {{ user.userprofile.home_town }} 
+                        </div>
+                    </h4>
                 </div>
                 <div class="col-md-12">
-                    <div class="col-md-3">
-                        <span class="glyphicon glyphicon-tags"></span>
-                    </div>
-                    <h4>{{ user.userprofile.tags }}</h4>
+                    <h4>    
+                        <div class="col-md-3">
+                            <span class="glyphicon glyphicon-tags"></span>
+                        </div>
+                        <div class="col-md-9">
+                            {{ user.userprofile.tags }}
+                        </div>
+                    </h4>
                 </div>
             </div>
         </div>
@@ -106,7 +112,7 @@
 
                 <a href="{% url 'add_picture' %}">
                     <div class="hbl-add-picture-button">
-                        <img src="{% static 'images/plus.png' %}" alt="add picture">
+                        <img src="{% static '/images/plus.png' %}" alt="add picture">
                     </div>
                 </a>
 
@@ -122,21 +128,21 @@
                     {% if this_user %}
                     <div class="add-to-tgl">
                         <a href="{% url 'remove_from_hbl' user.id picture.pk %}">
-                            <img src="{% static 'images/delete.png' %}">
+                            <img src="{% static '/images/delete.png' %}">
                         </a>
                     </div>
                     {% else %}
                     <!-- If logged in user is on their own profile don't allow to add pictures to tgl -->
                     <div class="add-to-tgl">
                         <a href="{% url 'add_to_tgl' user.id picture.pk %}">
-                            <img src="{% static 'images/plus.png' %}">
+                            <img src="{% static '/images/plus.png' %}">
                         </a>
                     </div>
 
     <!-- cynthias changes start -->
                     <div class="like-picture">
                         <a href="{% url 'like_picture' user.id picture.pk %}">
-                            <img src="{% static 'images/heart.png' %}">
+                            <img src="{% static '/images/heart.png' %}">
                             <div class="like-count">
                                 {{ picture.likes }}
                             </div>
@@ -160,7 +166,7 @@
                     {% if this_user %}
                     <div class="add-to-tgl">
                         <a href="{% url 'remove_from_tgl' user.id picture.pk %}">
-                            <img src="../../../static/images/delete.png">
+                            <img src="{% static '/images/delete.png' %}">
                         </a>
                     </div>
     <!-- cynthias changes start -->
@@ -168,13 +174,13 @@
 
                     <div class="add-to-tgl">
                         <a href="{% url 'add_to_tgl' user.id picture.pk %}">
-                            <img src="../../../static/images/plus.png">
+                            <img src="{% static '/images/plus.png' %}">
                         </a>
                     </div>
 
                     <div class="like-picture">
                         <a href="{% url 'like_picture' user.id picture.pk %}">
-                            <img src="../../../static/images/heart.png">
+                            <img src="{% static '/images/heart.png' %}">
                             <div class="like-count">
                                 {{ picture.likes }}
                             </div>

@@ -34,13 +34,13 @@
                 {% else %}
                     <div class="add-to-tgl">
                         <a href="{% url 'add_to_tgl' user.id pic.pk %}">
-                            <img src="{% static "/images/plus.png" %}">
+                            <img src="{% static '/images/plus.png' %}">
                         </a>
                     </div>
                 {% endif %}
                 <div class="like-picture">
                     <a href="{% url 'like_picture' user.id pic.pk %}">
-                        <img src="{% static "/images/heart.png" %}">
+                        <img src="{% static '/images/heart.png' %}">
                         <div class="like-count">
                             {{ pic.likes }}
                         </div>
@@ -108,7 +108,7 @@
 	<div id="signin-container">
         <div id="signin-box">
             <div class="margin-control">
-                <img src="../../../static/images/wandr-seal.png" alt="Wandr Logo" />
+                <img src="{% static '/images/wandr-seal.png' %}" alt="Wandr Logo" />
                 <h1>Welcome to Wandr</h1>
             </div>
 
