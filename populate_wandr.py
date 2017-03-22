@@ -21,34 +21,34 @@ def populate():
     add_user("Rob", "pinniped2", "test2@email.com")
     add_user("Cynthia", "pinniped3", "test3@email.com")
 
-    update_userprofile(1, "https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png",
-                       "https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png",
+    update_userprofile(1, "http://img.kpopmap.com/2016/01/sm-rookies-kun-profile.jpg",
+                       "http://www.placestoseeinyourlifetime.com/wp-content/uploads/2014/05/Top-10-Valleys-Moraine-Photo-by-Chris-Greenwood-980x624.jpg",
                        "This is the population script bio for Cristina")
-    update_userprofile(2, "https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png",
-                       "https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png",
+    update_userprofile(2, "http://devilsworkshop.org/files/2013/01/enlarged-facebook-profile-picture.jpg",
+                       "http://web.mit.edu/nature/archive/student_projects/2009/dbuelow/Images/Picturesque2.jpg",
                        "This is the population script bio for Rob")
     update_userprofile(3, "https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png",
-                       "https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png",
+                       "https://media.mnn.com/assets/images/2015/10/GinkakujiTempleKyotoAutumnLeaves.jpg.696x0_q80_crop-smart.jpg",
                        "This is the population script bio for Cynthia")
 
     add_picture(1, "test_name", "test_description", "test_location",
-                "http://m.chinadaily.com.cn/en/img/attachement/jpg/site1/20150823/b083fe9c5916174365cc0e.jpg")
+                "http://m.chinadaily.com.cn/en/img/attachement/jpg/site1/20150823/b083fe9c5916174365cc0e.jpg", 2)
     add_picture(1, "test_name", "test_description", "test_location",
-                "http://www.placestoseeinyourlifetime.com/wp-content/uploads/2016/04/a-980x642.jpg")
+                "http://www.placestoseeinyourlifetime.com/wp-content/uploads/2016/04/a-980x642.jpg", 4)
     add_picture(1, "test_name", "test_description", "test_location",
-                "http://www.placestoseeinyourlifetime.com/wp-content/uploads/2016/04/a-980x642.jpg")
+                "http://www.placestoseeinyourlifetime.com/wp-content/uploads/2016/04/a-980x642.jpg", 11)
     add_picture(2, "test_name", "test_description", "test_location",
-                "http://1.bp.blogspot.com/-bH8v4Tiufhs/U8UbufaBKiI/AAAAAAAAXVE/OwIxLQAhaCQ/s1600/picturesque+landscape.jpg")
+                "http://1.bp.blogspot.com/-bH8v4Tiufhs/U8UbufaBKiI/AAAAAAAAXVE/OwIxLQAhaCQ/s1600/picturesque+landscape.jpg", 10)
     add_picture(2, "test_name", "test_description", "test_location",
-                "http://media02.hongkiat.com/picturesque-villages-on-earth/wallace-idaho.jpg")
+                "http://media02.hongkiat.com/picturesque-villages-on-earth/wallace-idaho.jpg", 21)
     add_picture(2, "test_name", "test_description", "test_location",
-                "https://image.slidesharecdn.com/picturesquetownsinwinter-141120092550-conversion-gate01/95/picturesque-towns-in-winter-1-638.jpg?cb=1416475643")
+                "https://image.slidesharecdn.com/picturesquetownsinwinter-141120092550-conversion-gate01/95/picturesque-towns-in-winter-1-638.jpg?cb=1416475643", 9)
     add_picture(3, "test_name", "test_description", "test_location",
-                "http://ww3.hdnux.com/photos/57/55/00/12505134/3/920x920.jpg")
+                "http://ww3.hdnux.com/photos/57/55/00/12505134/3/920x920.jpg", 1)
     add_picture(3, "test_name", "test_description", "test_location",
-                "https://media-cdn.tripadvisor.com/media/photo-s/07/1f/a6/46/very-picturesque.jpg")
+                "https://media-cdn.tripadvisor.com/media/photo-s/07/1f/a6/46/very-picturesque.jpg", 8)
     add_picture(3, "test_name", "test_description", "test_location",
-                "https://www.thepinnaclelist.com/wp-content/uploads/2014/06/2-picturesque-towns-sun-bleached-coasts-salento-peninsula-apulia-italy-the-pinnacle-list-tpl.jpg")
+                "https://www.thepinnaclelist.com/wp-content/uploads/2014/06/2-picturesque-towns-sun-bleached-coasts-salento-peninsula-apulia-italy-the-pinnacle-list-tpl.jpg", 11)
 
 
 def add_user(username, password, email):
@@ -73,14 +73,16 @@ def update_userprofile(userid, profile_picture, cover_photo, bio):
     return p
 
 
-def add_picture(userid, name, description, location, picture):
+def add_picture(userid, name, description, location, picture, likes):
     h = HaveBeenList.objects.get(belongs_to=userid)
 
     url_picture = picture
     image_content = ContentFile(requests.get(url_picture).content)
     pic = Picture.objects.create(name=name, description=description, location=location, have_been_list=h)
     pic.picture.save("picture.jpg", image_content)
-
+    pic.likes = likes
+    h.total_likes += likes
+    h.save()
     pic.save()
     return pic
 
