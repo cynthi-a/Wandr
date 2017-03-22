@@ -39,7 +39,7 @@ class UserProfile(models.Model):
     bio = models.TextField(max_length=50, blank=True)
 
     home_town = models.TextField(max_length=50, blank = True, null = True)
-    tags = models.TextField(max_length=50, blank = True)
+    tags = models.TextField(max_length=50, blank = True, null = True)
 
     def __unicode__(self):
         return str(self.user.username)
