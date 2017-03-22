@@ -34,13 +34,13 @@
                 {% else %}
                     <div class="add-to-tgl">
                         <a href="{% url 'add_to_tgl' user.id pic.pk %}">
-                            <img src="{% static '/images/plus.png' %}">
+                            <img src="{% static '/images/plus.png' %}" alt="add_to_tgl"/>
                         </a>
                     </div>
                 {% endif %}
                 <div class="like-picture">
                     <a href="{% url 'like_picture' user.id pic.pk %}">
-                        <img src="{% static '/images/heart.png' %}">
+                        <img src="{% static '/images/heart.png' %}" alt="like_button"/>
                         <div class="like-count">
                             {{ pic.likes }}
                         </div>
