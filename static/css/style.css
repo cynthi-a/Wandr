@@ -58,6 +58,7 @@
     border-radius:50%;
     margin-top:-125px;
     overflow:hidden;
+    z-index: 10;
 }
 #empty-profile-picture-wrapper {
     width:250px;
@@ -149,10 +150,12 @@
     border-right:1px solid #cfcfcf;
     box-sizing: border-box;
     min-height: 300px;
+    margin-bottom: 50px;
 }
 
 .tgl-container {
     border-top:1px solid #cfcfcf;
+    margin-bottom: 50px;
 }
 
 /* The object-fit:cover might not work on some IE or Edge browsers */
@@ -169,11 +172,16 @@
 
 .list-img-container {
     margin-top: 20px;
-    padding-bottom: 30%;
+    padding-bottom: 65%;
     /*border: 2px solid #96bca5;*/
     text-align: center;
     position: relative;
     overflow: hidden;
+}
+@media screen and (min-width:992px) {
+    .list-img-container {
+        padding-bottom: 30%;
+    }
 }
 .add-to-tgl {
     width: 50px;
@@ -240,9 +248,18 @@
     opacity: 0.9;
     transform: scale(1);
 }
+
 #user-info-container {
-    margin-top: -160px;
+    margin-top: 50px;
+    margin-bottom: 60px;
     min-height: 250px;
+}
+
+@media screen and (min-width:992px) {
+    #user-info-container {
+        margin-top: -160px;
+        margin-bottom:0;
+    }
 }
 .hbl-title-container {
     display:flex;

@@ -68,9 +68,11 @@ div#login-and-register-buttons {
     flex-direction: column;
     background-image: url("../images/wandrlust.jpg");
     background-size:cover;
+    margin-top: -140px;
 }
 #signin-box {
     padding-top: 30px;
+    margin-top:70px;
     width:500px;
     height:auto;
     justify-content: center;

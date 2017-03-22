@@ -115,7 +115,6 @@ a {
 .page-wrap {
   min-height: 100%;
   /* equal to footer height */
-  margin-bottom: 70px;
 }
 .page-wrap:after {
   content: "";
@@ -128,10 +127,10 @@ footer {
 	opacity: 0.85;
 }
 
-footer.site-footer, .page-wrap:after {
-  	çheight: 70px;
+footer.site-footer {
+  	height: 70px;
+	line-height:70px;
 	clear:both;
-	margin-top: 2%;
 }
 
 footer a {
