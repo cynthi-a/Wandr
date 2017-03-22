@@ -50,7 +50,9 @@ class ContactForm(forms.Form):
 
 class BioForm(forms.ModelForm):
     bio = forms.CharField(required=False, widget=forms.Textarea, help_text="Tell the community about yourself.")
+    home_town = forms.CharField(required=False, widget=forms.Textarea, help_text="Home town")
+    tags = forms.CharField(required=False, widget=forms.Textarea, help_text="")
 
     class Meta:
         model = UserProfile
-        fields = ('bio',)
+        fields = ('bio', 'home_town', 'tags')

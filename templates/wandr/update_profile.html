@@ -6,21 +6,22 @@
 
 <h1>Edit Your Bio</h1>
 	<div class="container col-sm-12">
-	    <form method="POST" id="bio" action="{% url 'update_profile' user_id %}" enctype="multipart/form-data">
+	    <form method="post" id="form" action="{% url 'update_profile' user_id %}" enctype="multipart/form-data">
 	    {% csrf_token %}
 
 	    {% for field in form %}
 	         <div class="form-group row">
-	         	<!-- <label for="{{ field.id_for_label }}" class="col-form-label col-sm-2">
+	         	<label for="{{ field.id_for_label }}" class="col-form-label col-sm-2">
 	           		{{ field.label }}
-	         	</label> -->
+	         	</label>
 	         	<div class="col-sm-12">
 	         	<!-- 	{{ field }} -->
+	     
 	         		<input id="{{ field.id_for_label }}" type="{{ field.field.widget.input_type }}" name="{{ field.html_name }}" class="form-control" placeholder="{{ field.help_text }}">
 	         	</div>
 	        </div>
 	        {% endfor %}
-	         <input type="submit" class="btn btn-primary" name="submit" value="Save" />
+	         <input type="submit" class="btn btn-primary" name="submit" value="Submit" />
 	    </form>
 	</div>
 

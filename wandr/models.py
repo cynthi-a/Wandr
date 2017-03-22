@@ -36,7 +36,10 @@ class UserProfile(models.Model):
     # additional attributes
     picture = models.ImageField(upload_to='profile_images', blank=True)
     cover_photo = models.ImageField(upload_to='cover_photos', blank=True)
-    bio = models.TextField(max_length=600, blank=True)
+    bio = models.TextField(max_length=50, blank=True)
+    
+    home_town = models.TextField(max_length=50, blank = True)
+    tags = models.TextField(max_length=50, blank = True)
 
     def __unicode__(self):
         return str(self.user.username)

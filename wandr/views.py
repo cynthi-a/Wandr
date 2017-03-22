@@ -363,14 +363,27 @@ def update_profile(request, user_id):
     if request.method == 'POST':
         form = BioForm(request.POST)
         if form.is_valid():
+
+            # usr_bio_form = form.save(commit=False)
+            # usr_bio_form.user = request.user
+
             userProfile = UserProfile.objects.get(user=request.user)
             bio = form.cleaned_data['bio']
+
+            home_town = form.cleaned_data['home_town']
+            tags = form.cleaned_data['tags']
+
+
             userProfile.bio = bio
+            userProfile.home_town = home_town
+            userProfile.tags = tags
+
             userProfile.save()
+
             return HttpResponseRedirect(reverse('user_profile', args=[user_id]))
 
     else:
 
         userProfile = UserProfile.objects.get ( pk=user_id )
-        form = BioForm ( initial={'bio': userProfile.bio} )
+        form = BioForm ( initial={'bio': userProfile.bio, 'tags': userProfile.tags, 'home_town': userProfile.home_town} )
         return render ( request, 'wandr/update_profile.html', {'form': form, 'user_id': user_id})

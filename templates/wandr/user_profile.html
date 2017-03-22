@@ -66,23 +66,35 @@
         <div class="col-md-12">
             <!-- User Bio -->
             <div class="col-md-4">
-                <h2>User Bio<a href="{% url 'update_profile' user.id %}"><img class="edit-pencil-img" src="../../../static/images/edit_pencil.jpg" /></a></h2>
-                
-                <p>{{ user.userprofile.bio }}</p>
+
+            {% if this_user %}
+                <h2>About You<a href="{% url 'update_profile' user.id %}"><img class="edit-pencil-img" src="../../../static/images/edit_pencil.jpg" /></a></h2>
+            {% else %}
+                <h2>{{ user.username }}'s Bio</h2>
+            {% endif %}    
+
+                <p class="text-justify">{{ user.userprofile.bio }}</p>
             </div>
 
             <!-- User Info -->
             <div class="col-md-4 col-md-push-4">
                 <h2>User Info</h2>
                 <div class="col-md-6">
-                    Test Test Test Test Test Test Test Test Test
+                    <div class="col-md-5">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </div>
+                    <p class="text-justify"> {{ user.userprofile.home_town }} </p>
                 </div>
                 <div class="col-md-6">
-                    Test Test Test Test Test Test Test Test Test
+                    <div class="col-md-5">
+                        <span class="glyphicon glyphicon-tags"></span>
+                    </div>
+                    {{ user.userprofile.tags }}
                 </div>
             </div>
         </div>
     </div>
+
 
     <div class="container-fluid">
         <!-- Have Been List -->
