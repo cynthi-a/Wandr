@@ -74,11 +74,31 @@
         {% endblock %}
     </div>
 
-    <footer class="site-footer">
+<!--     <footer class="site-footer">
         <a href="{% url 'about' %}">@ 2017 Pinniped Production</a>
         <a href="mailto:email@email.com">email@email.com</a>
         <a href=""><img src="../../../static/images/logo-50.png" alt="Wandr Logo" style="margin-top: 5px"/></a>
-    </footer>
+    </footer> -->
+
+    <div id="footer" class="footer-bottom site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+					<div class="footer-padding-top">
+						<p class="text-center"><a href="{% url 'about' %}">@ 2017 Team Pinnipeds</a></p>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+					<div class="footer-padding-top">
+						<p class="text-center"><a href="mailto:email@email.com">email@email.com</a></p>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+					<p class="text-center"><a href="{% url 'index' %}"><img src="{% static '/images/logo-50.png' %}" alt="Wandr Logo" style="margin-top: 5px"/></a></p>
+				</div>
+			</div>
+		</div>
+	</div>
 
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>

@@ -121,6 +121,17 @@ a {
   display: block;
 }
 
+
+#footer {
+    background-color: #8ED081;
+    opacity: 0.85;
+}
+
+.footer-padding-top {
+    padding-top: 20px;
+}
+
+/*
 footer {
 	background-color: #8ED081;
 	text-align: center;
@@ -137,7 +148,7 @@ footer a {
 	margin: 20px 60px 5px 60px;
 	color: #2F4F4F;
 }
-
+*/
 .add-to-tgl {
     width: 50px;
     height: 50px;
