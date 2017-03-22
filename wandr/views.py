@@ -19,6 +19,7 @@ from django.template.loader import get_template
 def index(request):
     picture_list = Picture.objects.order_by('likes')
     user_id = request.user.pk
+
     context_dict = {'pictures': picture_list, 'user_id': user_id}
 
     return render(request, 'wandr/index.html', context=context_dict)
