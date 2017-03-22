@@ -38,8 +38,8 @@ class UserProfile(models.Model):
     cover_photo = models.ImageField(upload_to='cover_photos', blank=True)
     bio = models.TextField(max_length=50, blank=True)
 
-    home_town = models.TextField(max_length=50, blank = True, null = True)
-    tags = models.TextField(max_length=50, blank = True, null = True)
+    home_town = models.TextField(max_length=50, blank = True, default = '')
+    tags = models.TextField(max_length=50, blank = True, default = '')
 
     def __unicode__(self):
         return str(self.user.username)
