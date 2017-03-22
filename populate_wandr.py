@@ -32,7 +32,23 @@ def populate():
                        "This is the population script bio for Cynthia")
 
     add_picture(1, "test_name", "test_description", "test_location",
-                "https://www.google.co.uk/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png")
+                "http://m.chinadaily.com.cn/en/img/attachement/jpg/site1/20150823/b083fe9c5916174365cc0e.jpg")
+    add_picture(1, "test_name", "test_description", "test_location",
+                "http://www.placestoseeinyourlifetime.com/wp-content/uploads/2016/04/a-980x642.jpg")
+    add_picture(1, "test_name", "test_description", "test_location",
+                "http://www.placestoseeinyourlifetime.com/wp-content/uploads/2016/04/a-980x642.jpg")
+    add_picture(2, "test_name", "test_description", "test_location",
+                "http://1.bp.blogspot.com/-bH8v4Tiufhs/U8UbufaBKiI/AAAAAAAAXVE/OwIxLQAhaCQ/s1600/picturesque+landscape.jpg")
+    add_picture(2, "test_name", "test_description", "test_location",
+                "http://media02.hongkiat.com/picturesque-villages-on-earth/wallace-idaho.jpg")
+    add_picture(2, "test_name", "test_description", "test_location",
+                "https://image.slidesharecdn.com/picturesquetownsinwinter-141120092550-conversion-gate01/95/picturesque-towns-in-winter-1-638.jpg?cb=1416475643")
+    add_picture(3, "test_name", "test_description", "test_location",
+                "http://ww3.hdnux.com/photos/57/55/00/12505134/3/920x920.jpg")
+    add_picture(3, "test_name", "test_description", "test_location",
+                "https://media-cdn.tripadvisor.com/media/photo-s/07/1f/a6/46/very-picturesque.jpg")
+    add_picture(3, "test_name", "test_description", "test_location",
+                "https://www.thepinnaclelist.com/wp-content/uploads/2014/06/2-picturesque-towns-sun-bleached-coasts-salento-peninsula-apulia-italy-the-pinnacle-list-tpl.jpg")
 
 
 def add_user(username, password, email):
