@@ -27,14 +27,31 @@
         <div class="col-md-12">
             {% for pic in pictures %}
             <div class="img-wrapper col-md-4">
-                <img src="/media/{{ pic.picture }}" alt="{{ pic.name }}"/>
-                
-               
+                <img class="index-picture" src="/media/{{ pic.picture }}" alt="{{ pic.name }}"/>
+
+                {% if pic.have_been_list.id == request.user.id %}
+                    <!-- If picture belongs to logged in user don't allow to add pictures to tgl -->
+                {% else %}
+                    <div class="add-to-tgl">
+                        <a href="{% url 'add_to_tgl' user.id pic.pk %}">
+                            <img src="{% static "/images/plus.png" %}">
+                        </a>
+                    </div>
+                {% endif %}
+                <div class="like-picture">
+                    <a href="{% url 'like_picture' user.id pic.pk %}">
+                        <img src="{% static "/images/heart.png" %}">
+                        <div class="like-count">
+                            {{ pic.likes }}
+                        </div>
+                    </a>
+                </div>
+
                 <div class="img_overlay" data-toggle="modal" data-target="#{{ pic.picture_id }}">
                     <div class="description">
                         <h4>{{ pic.name }}</h4>
-                        <p>{{ pic.description }}</br>
-                        {{ pic.location }}</br></p>
+                        <p>{{ pic.description }}<br>
+                        {{ pic.location }}<br></p>
                     </div>
                 </div>
 
@@ -49,12 +66,12 @@
                             <h4 class="modal-title">{{ pic.name }}</h4>
                           </div>
                           <div class="modal-body">
-                          <img class ="lightbox-img" src="/media/{{ pic.picture }}" alt="{{ pic.name }}"/></br>
-                            <p>{{ pic.description }}</br></p>
+                          <img class ="lightbox-img" src="/media/{{ pic.picture }}" alt="{{ pic.name }}"/><br>
+                            <p>{{ pic.description }}<br></p>
                           </div>
                           <div class="modal-footer">
                             User: <a href="{% url 'user_profile' pic.have_been_list %}"><strong>{{ pic.have_been_list.belongs_to.username }}</strong></a></br>
-                            Location: {{ pic.location }}</br>
+                            Location: {{ pic.location }}<br>
                           </div>
                         </div>
 
@@ -67,7 +84,7 @@
 </div>
 
 <div class="button-centred">
-    <a href="{% url 'picture_overview' %}"><button type="button" id="more" class="btn btn-default">More Pictures</button></span></a>
+    <a href="{% url 'picture_overview' %}"><button type="button" id="more" class="btn btn-default">More Pictures</button></a>
 </div>
 
 

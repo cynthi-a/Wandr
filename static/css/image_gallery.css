@@ -11,7 +11,7 @@
     }
 }
 
-.img-wrapper img {
+img.index-picture {
     top: 5%;
     left: 5%;
     position: absolute;

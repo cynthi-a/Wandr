@@ -8,14 +8,6 @@ import requests
 
 
 def populate():
-    # create users
-
-    # users = [
-    #     {"username":"Cristina", "password":"pinniped1", "email":"test1@email.com"},
-    #     {"username":"Rob", "password":"pinniped2", "email":"test2@email.com"},
-    #     {"username":"Cynthia", "password":"pinniped3", "email":"test3@email.com"},
-    # ]
-
 
     add_user("Cristina", "pinniped1", "test1@email.com")
     add_user("Rob", "pinniped2", "test2@email.com")
