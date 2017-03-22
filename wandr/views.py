@@ -19,8 +19,9 @@ from django.template.loader import get_template
 def index(request):
     picture_list = Picture.objects.order_by('-likes')[:6]
     user_id = request.user.pk
+    hbl = HaveBeenList.objects.order_by('-total_likes')[:10]
 
-    context_dict = {'pictures': picture_list, 'user_id': user_id}
+    context_dict = {'pictures': picture_list, 'user_id': user_id, 'user_ranking': hbl,}
 
     return render(request, 'wandr/index.html', context=context_dict)
 
@@ -196,6 +197,10 @@ def like_picture(request, user_id, picture_id):
             if pic:
                 likes = pic.likes + 1
                 pic.likes = likes
+                # 
+                pic.have_been_list.total_likes = pic.have_been_list.total_likes + 1
+                #
+                pic.have_been_list.save()
                 pic.save()
     return HttpResponseRedirect(reverse('user_profile', args=[user_id]))
 

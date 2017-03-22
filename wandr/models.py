@@ -8,6 +8,9 @@ class HaveBeenList(models.Model):
     # list_id = models.AutoField(primary_key=True)
     belongs_to = models.OneToOneField(User)
 
+    total_likes = models.IntegerField(default=0)
+
+
     def __unicode__(self):
         return str(self.pk)
 

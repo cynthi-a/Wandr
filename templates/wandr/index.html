@@ -18,16 +18,16 @@
 </div>
 
 <div class="margin-control ">
-    <h2 class="hotThisWeek">Hot this week</h2>
+    <h2 class="hotThisWeek">Most Popular</h2>
 </div>
 
 <div class="container-fluid">
 {% if pictures %}
     <div class="row">
-    <div class="col-md-12">
-        {% for pic in pictures %}
+        <div class="col-md-12">
+            {% for pic in pictures %}
             <div class="img-wrapper col-md-4">
-            <img src="/media/{{ pic.picture }}" alt="{{ pic.name }}"/>
+                <img src="/media/{{ pic.picture }}" alt="{{ pic.name }}"/>
                 
                
                 <div class="img_overlay" data-toggle="modal" data-target="#{{ pic.picture_id }}">
@@ -53,22 +53,36 @@
                             <p>{{ pic.description }}</br></p>
                           </div>
                           <div class="modal-footer">
-                            User: <a href="{% url 'user_profile' pic.have_been_list %}">{{ pic.have_been_list.belongs_to.username }}</a></br>
+                            User: <a href="{% url 'user_profile' pic.have_been_list %}"><strong>{{ pic.have_been_list.belongs_to.username }}</strong></a></br>
                             Location: {{ pic.location }}</br>
                           </div>
                         </div>
 
                       </div>
                     </div>
-
-            </div>
-        {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
 
 <div class="button-centred">
     <a href="{% url 'picture_overview' %}"><button type="button" id="more" class="btn btn-default">More Pictures</button></span></a>
 </div>
+
+
+<div class="margin-control ">
+    <h2 class="hotThisWeek">Top Contributors</h2>
+        <ul class="list-group">
+            {% for hbl in user_ranking %}
+                <li class="list-group-item justify-content-between">
+                    <a href="{% url 'user_profile' hbl %}"><strong>{{ hbl.belongs_to.username }}</strong></a>
+                    <span class="badge badge-default badge-pill">{{ hbl.total_likes }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+</div>
+
 
 {% endif %}
 
@@ -90,4 +104,5 @@
     </div>
 {% endif %}
 
+<div class="page-end"></div>
 {% endblock %}

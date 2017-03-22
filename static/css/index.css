@@ -16,6 +16,9 @@
 button#more {
     display: block;
     margin: 0 auto;
+}
+
+.page-end {
     margin-bottom: 100px;
 }
 
