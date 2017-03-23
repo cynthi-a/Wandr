@@ -152,5 +152,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 #Change on live server!!!!
 #STATIC_ROOT = 'C:/Users/c.gassmann/Documents/workspace/Wandr/wandr/static/'
+STATIC_ROOT = '/home/wandr/Wandr/static/'
 
 AUTH_PROFILE_MODULE = 'userprofile.UserProfile'

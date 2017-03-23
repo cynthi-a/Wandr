@@ -4,14 +4,11 @@ from wandr.models import Picture, HaveBeenList, User
 from django.contrib.staticfiles import finders
 from django.contrib.staticfiles.storage import staticfiles_storage
 
+"""
+Check if user has been created. Print out her/his username to console
+"""
 
-
-
-'''
 class UserTest(TestCase):
-    """
-    Check if user has been created. Print out her/his username to console
-    """
 
     def add_user(self):
         username = "Cristina"
@@ -30,10 +27,10 @@ class UserTest(TestCase):
         print(u.username)
 
 
+    """
+   Test if likes are not negative
+    """
 class LikeTest(TestCase):
-    """
-    ensure_views_are_positive should results True for categories where views are zero or positive
-    """
 
     def add_picture(self):
         userid = 1
@@ -42,7 +39,7 @@ class LikeTest(TestCase):
         description = "test_description"
         location = "test_location"
         picture = "http://m.chinadaily.com.cn/en/img/attachement/jpg/site1/20150823/b083fe9c5916174365cc0e.jpg"
-        likes = 0
+        likes = -1
         p = Picture.objects.get_or_create(have_been_list=have_been_list, name=name, description=description, location=location, picture=picture,likes=likes)
         p.save()
         return p
@@ -61,12 +58,10 @@ class LikeTest(TestCase):
         #pic = Picture(name='test', location='test', description='test', likes=-1, have_been_list=hbl.pk)
         #pic.save()
         #self.assertEqual((pic.likes >= 0), True)
-        '''
 
 """
 Check if app contains required static files
 """
-'''
 class TestStaticFiles(TestCase):
 
     def test_images(self):
@@ -77,7 +72,6 @@ class TestStaticFiles(TestCase):
 """
 Check if Form to Add Pictures works
 """
-
 class PictureFormTest(TestCase):
 
     def setUp(self):
