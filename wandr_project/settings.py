@@ -29,7 +29,7 @@ STATICFILES_DIRS = [STATIC_DIR, ]
 SECRET_KEY = '@%0!y)ntyx!uo+c3qj5ob(f3s!^t&*)xup%3ygk!*45yo_s@je'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
