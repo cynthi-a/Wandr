@@ -1,8 +1,7 @@
 .parallax {
-    /* The image used */
+    /* background image on index */
     background-image: url("../images/wandrlust.jpg");
 
-    /* Set a specific height */
     min-height: 500px; 
 
     /* Create the parallax scrolling effect */

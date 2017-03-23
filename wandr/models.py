@@ -5,7 +5,6 @@ from django.db.models.signals import post_save
 
 
 class HaveBeenList(models.Model):
-    # list_id = models.AutoField(primary_key=True)
     belongs_to = models.OneToOneField(User)
 
     total_likes = models.IntegerField(default=0)

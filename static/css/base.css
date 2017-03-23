@@ -23,39 +23,6 @@ h2 {
 	color: #354b48;
 }
 
-/*ul {*/
-	/*border-right: 1px solid #555;*/
-	/*font-weight: bold;*/
-	/*position: fixed;*/
-    /*top: 0;*/
-    /*right: 0;*/
-    /*left: 0;*/
-    /*list-style-type: none;*/
-    /*padding: 0;*/
-    /*overflow: hidden;*/
-    /*background-color: #8ED081;*/
-/*}*/
-
-/*ul a {*/
-	/*font-size: 18px;*/
-	/*border: 1px #555;*/
-    /*display: block;*/
-    /*color: #2F4F4F;*/
-    /*text-align: center;*/
-    /*padding: 25px 20px 14px 16px;*/
-    /*text-decoration: none;*/
-    /*float: left;*/
-/*}*/
-
-/*ul a:hover {*/
-	/*background-color: #82BE76;*/
-	/*color: white;*/
-/*}*/
-
-/*ul a:active {*/
-	/*background-color: #696969;*/
-/*}*/
-
 #menu-bar {
 	height: 50px;
     padding: 20px 0;

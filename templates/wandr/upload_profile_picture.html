@@ -11,15 +11,12 @@
         <form id="profile_picture_form" method="post" action="{% url 'upload_p_picture' user_id %}" enctype="multipart/form-data">
         {% csrf_token %}
 
-         <!-- Display each form -->
-         <!-- {{ profile_picture_form.as_p }} -->
          {% for field in profile_picture_form %}
          <div class="form-group row">
          	<label for="{{ field.id_for_label }}" class="col-form-label col-sm-2">
            		{{ field.label }}
          	</label>
          	<div class="col-sm-10">
-         	<!-- 	{{ field }} -->
          		<input id="{{ field.id_for_label }}" type="{{ field.field.widget.input_type }}" name="{{ field.html_name }}" class="form-control" placeholder="{{ field.help_text }}">
          	</div>
         </div>

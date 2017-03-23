@@ -1,5 +1,6 @@
 /**
  * Created by RMac on 28/02/2017.
+ * JS for resizing navigation bar on scroll
  */
 
 function menuContraction(){
