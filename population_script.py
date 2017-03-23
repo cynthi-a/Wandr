@@ -21,7 +21,7 @@ def populate():
     update_userprofile(2, "http://wandr.pythonanywhere.com/images/rob-profile.jpg",
                        "http://wandr.pythonanywhere.com/images/rob-cover.jpg",
                        "This is the population script bio for Rob")
-    update_userprofile(3, "http://wandr.pythonanywhere.com/images/cynthia-profile.jpg",
+    update_userprofile(3, "http://wandr.pythonanywhere.com/images/cynthia-profile-pic.jpg",
                        "http://wandr.pythonanywhere.com/images/cynthia-cover.jpg",
                        "This is the population script bio for Cynthia")
 
