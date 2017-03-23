@@ -21,19 +21,9 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 LOGIN_URL = '/wandr/login/'
 
-# Cynthia: Needed for the contact form, Email does not get sent
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = '2275765L@student.gla.ac.uk'
-EMAIL_HOST = 'legacy.campus.gla.ac.uk'
-EMAIL_PORT = 587
-EMAIL_HOST_USER ='2275765L'
-EMAIL_HOST_PASSWORD ='951011'
-EMAIL_USE_TLS = True
 
 STATICFILES_DIRS = [STATIC_DIR, ]
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '@%0!y)ntyx!uo+c3qj5ob(f3s!^t&*)xup%3ygk!*45yo_s@je'
@@ -125,16 +115,6 @@ PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
 ]
 
-# Registration - Cristina 04.03
-#REGISTRATION_OPEN = True
-#ACCOUNT_ACTIVATION_DAYS = 7
-#REGISTRATION_AUTO_LOGIN = True
-#LOGIN_REDIRECT_URL = '/wandr/'
-#LOGIN_URL = '/accounts/login/'
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.10/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -150,7 +130,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-#STATIC_ROOT = '/home/wandr/Wandr/static/'
-STATIC_ROOT = ''
 
 AUTH_PROFILE_MODULE = 'userprofile.UserProfile'

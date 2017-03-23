@@ -26,7 +26,7 @@ class UserTest(TestCase):
         self.assertEqual(u.__unicode__(), u.username)
         print(u.username)
 
-
+'''
     """
    Test if likes are not negative
     """
@@ -76,6 +76,7 @@ class TestStaticFiles(TestCase):
     def test_images(self):
         abs_path = finders.find('images/wandr-seal.png')
         self.assertTrue(staticfiles_storage.exists(abs_path))
+'''
 
 
 """
