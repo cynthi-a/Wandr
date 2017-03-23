@@ -62,6 +62,8 @@ h2 {
     box-sizing: content-box;
 	background: #8ED081;
 	border:0;
+	opacity: 0.85;
+	box-shadow: 0 5px 8px rgba(136, 136, 136, 0.50);
 	font-size:18px;
 	transition:padding 0.3s ease;
 }

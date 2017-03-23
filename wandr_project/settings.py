@@ -150,5 +150,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+#Change on live server!!!!
+#STATIC_ROOT = 'C:/Users/c.gassmann/Documents/workspace/Wandr/wandr/static/'
 
 AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
