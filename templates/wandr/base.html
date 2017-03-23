@@ -36,14 +36,14 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a class="nav-link" href="{% url 'add_picture' %}">Submit Picture</a></li>
-                <li><a class="nav-link" href="{% url 'about' %}">About</a></li>
                 {% if user.is_authenticated %}
+                <li><a class="nav-link" href="{% url 'add_picture' %}">Submit Picture</a></li>
                 <li><a class="nav-link" href="{% url 'logout' %}?next=/wandr/">Logout</a></li>
                 {% else %}
                 <li><a class="nav-link" href="{% url 'login' %}">Sign In</a></li>
                 <li><a class="nav-link" href="{% url 'register' %}">Sign Up</a></li></li>
                 {% endif %}
+                <li><a class="nav-link" href="{% url 'about' %}">About</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

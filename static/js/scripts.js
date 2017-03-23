@@ -7,9 +7,11 @@ function menuContraction(){
 	if (mq.matches) {
   		if(window.scrollY > '20'){
   			document.getElementById("menu-bar").style.padding = '0px';
+  			document.getElementById("menu-bar").style.opacity = 0.85;
   		}
   		else {
   			document.getElementById("menu-bar").style.padding = '20px 0px';
+  			document.getElementById("menu-bar").style.opacity = 1;
   		}
 	}
 
