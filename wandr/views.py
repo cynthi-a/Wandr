@@ -244,6 +244,9 @@ def user_logout(request):
 def about(request):
     return render(request, 'wandr/about.html')
 
+def sitemap(request):
+    return render(request, 'wandr/sitemap.html')
+
 
 # created 08.03. Cynthia; email does not get sent
 def contact(request):

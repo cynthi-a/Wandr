@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^profile/(?P<user_id>[0-9]+)/remove_hbl/(?P<picture_id>[0-9]+)$', views.remove_from_hbl, name='remove_from_hbl'),
 
     url(r'^profile/(?P<user_id>[0-9]+)/like_picture/(?P<picture_id>[0-9]+)$', views.like_picture, name='like_picture'),
+    url(r'^sitemap/$', views.sitemap, name='sitemap'),
 ]

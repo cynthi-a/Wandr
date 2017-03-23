@@ -32,15 +32,24 @@ class UserTest(TestCase):
     """
 class LikeTest(TestCase):
 
+    def add_user(self):
+        user = User.objects.get_or_create(username="Cristina", password="pinniped1", email="test@testmail.com")[0]
+        user.save()
+        #userid = 1
+        #user = User.objects.get(pk=userid)
+        have_been_list = HaveBeenList.objects.get(belongs_to=user)
+        return have_been_list
+
     def add_picture(self):
-        userid = 1
-        have_been_list = HaveBeenList.objects.get(belongs_to=userid)
+        user = User.objects.get_or_create(username="Cristina")
+        user = User.objects.get_or_create(username="Cristina")
+        hbl = HaveBeenList.objects.get(belongs_to=user.id)
         name = "test_name"
         description = "test_description"
         location = "test_location"
         picture = "http://m.chinadaily.com.cn/en/img/attachement/jpg/site1/20150823/b083fe9c5916174365cc0e.jpg"
         likes = -1
-        p = Picture.objects.get_or_create(have_been_list=have_been_list, name=name, description=description, location=location, picture=picture,likes=likes)
+        p = Picture.objects.get_or_create(have_been_list=hbl, name=name, description=description, location=location, picture=picture, likes=likes)
         p.save()
         return p
 

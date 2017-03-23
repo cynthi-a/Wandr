@@ -1,0 +1,16 @@
+{% extends 'wandr/base.html' %}
+{% load staticfiles %}
+{% block title_block %}
+	Sitemap
+{% endblock %}
+
+{% block body_block %}
+<br/>
+<h1>Sitemap</h1>
+<div class="about-block">
+<a href="{% url 'about' %}">About</a><br/>
+<a href="{% url 'login' %}">Login</a><br/>
+<a href="{% url 'register' %}">Sign Up</a></br>
+</div>
+
+{% endblock %}
