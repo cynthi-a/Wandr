@@ -114,6 +114,12 @@ a {
 	text-decoration: none;
 }
 
+div.about-block {
+	width: 70%;
+	margin: 20px auto;
+	font-size: 20px;
+}
+
 .page-wrap {
   min-height: 100%;
   /* equal to footer height */
